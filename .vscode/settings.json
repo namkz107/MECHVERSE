@@ -1,0 +1,19 @@
+{
+  "terminal.integrated.defaultProfile.windows": "MECHVERSE PowerShell",
+  "terminal.integrated.profiles.windows": {
+    "MECHVERSE PowerShell": {
+      "path": "${env:windir}\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "args": [
+        "-NoLogo",
+        "-NoProfile",
+        "-NoExit",
+        "-Command",
+        "& { Import-Module PSReadLine; $mechHistoryDirectory = Join-Path '${workspaceFolder}' '.cache/terminal-history'; New-Item -ItemType Directory -Path $mechHistoryDirectory -Force | Out-Null; $mechHistoryFile = Join-Path $mechHistoryDirectory ((Split-Path -Leaf (Get-Location).Path) + '.txt'); if (!(Test-Path -LiteralPath $mechHistoryFile)) { Set-Content -LiteralPath $mechHistoryFile -Value 'yarn start' -Encoding UTF8 } elseif ((Get-Content -LiteralPath $mechHistoryFile -Tail 1) -ne 'yarn start') { Add-Content -LiteralPath $mechHistoryFile -Value 'yarn start' -Encoding UTF8 }; Set-PSReadLineOption -HistorySavePath $mechHistoryFile -HistorySaveStyle SaveIncrementally; Set-PSReadLineKeyHandler -Key UpArrow -Function PreviousHistory; Set-PSReadLineKeyHandler -Key DownArrow -Function NextHistory; function global:yarn { & yarn.cmd @args }; Write-Host 'MECHVERSE: nhan phim mui ten len de chon yarn start, Enter de chay.' -ForegroundColor DarkCyan }"
+      ]
+    },
+    "Command Prompt": {
+      "path": "${env:windir}\\System32\\cmd.exe",
+      "args": []
+    }
+  }
+}

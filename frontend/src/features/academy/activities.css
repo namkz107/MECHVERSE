@@ -1,0 +1,258 @@
+.learning-activity {
+  background: #f3f0e7;
+  color: #18211d;
+  border: 1px solid #b9c0ad;
+  border-radius: 18px;
+  padding: clamp(18px, 3vw, 32px);
+  margin-block: 24px;
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+.learning-activity *,
+.lesson-diagram * {
+  box-sizing: border-box;
+}
+.learning-activity p,
+.learning-activity legend {
+  color: #3d493e;
+  font-size: 16px;
+}
+.learning-activity .activity-heading > span {
+  color: #4b594a;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+.learning-activity h3 {
+  font-size: clamp(21px, 3vw, 28px);
+  color: #19251f;
+  margin: 6px 0 12px;
+}
+.learning-activity .activity-assumption {
+  font-size: 14px;
+  color: #4b594a;
+}
+.learning-activity fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+.learning-activity legend {
+  font-weight: 650;
+  margin-bottom: 12px;
+  width: 100%;
+}
+.learning-activity select,
+.learning-activity input:not([type="radio"]):not([type="range"]) {
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 10px 12px;
+  border: 1px solid #7d8977;
+  background: #fffef9;
+  border-radius: 8px;
+  color: #18211d;
+  font: inherit;
+}
+.learning-activity label {
+  display: block;
+}
+.learning-activity input[type="radio"] {
+  width: 21px;
+  height: 21px;
+  min-width: 21px;
+  accent-color: #19251f;
+  margin: 3px 0 0;
+}
+.learning-activity .activity-choice {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  min-height: 48px;
+  border: 1px solid #a9b39e;
+  background: #fffef9;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 9px;
+  cursor: pointer;
+}
+.learning-activity .activity-choice:has(input:checked) {
+  background: #e1e8d2;
+  border-color: #19251f;
+}
+.learning-activity .activity-choice:has(input:focus-visible) {
+  outline: 3px solid #a85f37;
+  outline-offset: 3px;
+}
+.learning-activity .activity-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-block: 18px;
+}
+.learning-activity button {
+  min-height: 46px;
+  min-width: 44px;
+  padding: 10px 16px;
+  font: inherit;
+  font-weight: 650;
+  border: 1px solid #19251f;
+  border-radius: 8px;
+  background: #19251f;
+  color: #fffef9;
+  cursor: pointer;
+}
+.learning-activity button:hover {
+  background: #304435;
+}
+.learning-activity button.activity-secondary {
+  background: #fffef9;
+  color: #19251f;
+}
+.learning-activity button.activity-secondary:hover {
+  background: #e1e8d2;
+}
+.learning-activity :is(button, select, input, a):focus-visible {
+  outline: 3px solid #a85f37;
+  outline-offset: 3px;
+}
+.learning-activity .activity-feedback {
+  border-left: 4px solid #a85f37;
+  padding: 12px 16px;
+  background: #fffef9;
+  margin-block: 18px;
+}
+.learning-activity .activity-feedback.is-correct {
+  border-color: #315c35;
+  background: #e1e8d2;
+}
+.learning-activity .activity-theory-link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  color: #273c2b;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 650;
+}
+.learning-activity .activity-match-list {
+  display: grid;
+  gap: 14px;
+}
+.learning-activity .activity-match-list strong {
+  display: block;
+  margin-bottom: 5px;
+}
+.learning-activity .activity-number-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(100px, 0.5fr);
+  gap: 14px;
+}
+.learning-activity .activity-sliders {
+  display: grid;
+  gap: 16px;
+}
+.learning-activity .activity-sliders label > span {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.learning-activity input[type="range"] {
+  width: 100%;
+  height: 44px;
+  margin: 0;
+  accent-color: #294b30;
+  cursor: pointer;
+}
+.learning-activity .activity-live-result {
+  display: block;
+  font-size: 26px;
+  color: #19251f;
+  font-weight: 700;
+  padding-block: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.learning-activity .activity-projection-options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.learning-activity .activity-projection-options .activity-choice {
+  margin: 0;
+  gap: 7px;
+}
+.learning-activity .activity-projection-options span {
+  display: block;
+  min-width: 0;
+  width: 100%;
+}
+.learning-activity .activity-projection-options svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.lesson-diagram {
+  color: #19251f;
+  margin: 18px 0;
+  border-radius: 12px;
+  border: 1px solid #b9c0ad;
+  background: #f8f6ee;
+  padding: 12px;
+}
+.lesson-diagram svg,
+.learning-activity .activity-torque-diagram {
+  display: block;
+  width: 100%;
+  max-width: 620px;
+  height: auto;
+  margin-inline: auto;
+  color: #19251f;
+}
+.lesson-diagram svg text,
+.learning-activity .activity-torque-diagram text {
+  font-family: "Be Vietnam Pro", "Segoe UI", sans-serif;
+  font-size: 14px;
+  fill: #19251f;
+}
+.lesson-diagram figcaption {
+  text-align: center;
+  color: #465343;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-top: 8px;
+}
+@media (max-width: 520px) {
+  .learning-activity .activity-projection-options {
+    grid-template-columns: 1fr;
+  }
+  .learning-activity .activity-projection-options .activity-choice {
+    align-items: center;
+  }
+  .learning-activity .activity-projection-options span {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .learning-activity .activity-projection-options svg {
+    width: 145px;
+    max-width: 65%;
+  }
+  .learning-activity .activity-actions {
+    flex-direction: column;
+  }
+  .learning-activity .activity-number-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .learning-activity *,
+  .lesson-diagram * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

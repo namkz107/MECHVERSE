@@ -1,0 +1,128 @@
+{
+  "id": "EDU-FAN-01",
+  "revision": 1,
+  "status": "educational-demo",
+  "geometry": "fan-edu-v1.glb",
+  "coordinateSystem": "Y-up, front +Z",
+  "scale": "illustrative-unverified",
+  "occurrences": [
+    {
+      "id": "front-guard",
+      "nodeBinding": "front-guard",
+      "assembled": [
+        0,
+        1.15,
+        0.62
+      ],
+      "explodedOffset": [
+        0,
+        0,
+        2.3
+      ]
+    },
+    {
+      "id": "cap",
+      "nodeBinding": "cap",
+      "assembled": [
+        0,
+        1.15,
+        0.44
+      ],
+      "explodedOffset": [
+        0,
+        0,
+        1.8
+      ]
+    },
+    {
+      "id": "blade",
+      "nodeBinding": "blade",
+      "assembled": [
+        0,
+        1.15,
+        0.23
+      ],
+      "explodedOffset": [
+        0,
+        0,
+        1.2
+      ]
+    },
+    {
+      "id": "rear-guard",
+      "nodeBinding": "rear-guard",
+      "assembled": [
+        0,
+        1.15,
+        -0.14
+      ],
+      "explodedOffset": [
+        0,
+        0,
+        -0.65
+      ]
+    },
+    {
+      "id": "shaft",
+      "nodeBinding": "shaft",
+      "assembled": [
+        0,
+        1.15,
+        -0.05
+      ],
+      "explodedOffset": [
+        0,
+        0,
+        -0.1
+      ]
+    },
+    {
+      "id": "motor",
+      "nodeBinding": "motor",
+      "assembled": [
+        0,
+        1.15,
+        -0.57
+      ],
+      "explodedOffset": [
+        0,
+        0,
+        -1.4
+      ]
+    },
+    {
+      "id": "stand",
+      "nodeBinding": "stand",
+      "assembled": [
+        0,
+        -0.55,
+        -0.48
+      ],
+      "explodedOffset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "base",
+      "nodeBinding": "base",
+      "assembled": [
+        0,
+        -1.65,
+        -0.35
+      ],
+      "explodedOffset": [
+        0,
+        -0.25,
+        0
+      ]
+    }
+  ],
+  "limitations": [
+    "No real product identity",
+    "No validated dimensions or technical materials",
+    "No motor internals",
+    "Exploded layout is not a disassembly procedure"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "publisher": "Noctua",
+  "model": "NF-A12x25r PWM",
+  "source": "https://cdn.noctua.at/media/nf_a12x25r_pwm_1.jpg",
+  "product": "https://www.noctua.at/en/products/nf-a12x25r-pwm/downloads",
+  "rights": "https://www.noctua.at/en/legal-information",
+  "license": "Noctua website asset use grant; revocable, non-exclusive, royalty-free; not CC0.",
+  "checkedAt": "2026-11-09",
+  "changes": "Resized to 640/1280px wide and encoded WebP, no content edits or crop.",
+  "scope": "Official product image of a separate computer-fan case study; not the EDU-FAN-01 desk-fan model and not evidence of interior geometry.",
+  "originalSha256": "AC30DB9FBD6C5A56EE9733E10B0C34079E3B9FC7265B92DC59C2DCA6FF5563D2"
+}
