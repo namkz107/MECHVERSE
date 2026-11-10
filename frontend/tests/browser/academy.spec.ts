@@ -27,11 +27,8 @@ test("U1 home to C01, draft resume, submit rationale and review while F01 stays 
     .click();
   await page
     .getByRole("link")
-    .filter({
-      has: page.getByRole("heading", {
-        name: "Nhìn đồ vật thành một hệ thống",
-      }),
-    })
+    .filter({ hasText: "Sản phẩm–cụm–chi tiết" })
+    .first()
     .click();
   await expect(
     page.getByRole("heading", {

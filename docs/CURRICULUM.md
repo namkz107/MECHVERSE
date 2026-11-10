@@ -1,5 +1,19 @@
 # Chương trình học cơ khí — bản học thử
 
+## Cập nhật lộ trình và cách học — 09/11/2026
+
+Đặc tả đầy đủ: [CURRICULUM-LEARNING-MODES.md](CURRICULUM-LEARNING-MODES.md). [Ma trận độ phủ](CURRICULUM-COVERAGE.md) truy 96 phạm vi core, 5 nhánh chuyên sâu và bổ trợ vào nội dung/điểm thiếu. Registry hiện có **19 bài, 64 câu hỏi, 20 nguồn**: 12 phạm vi nhập môn M01/M02 có nội dung; 7 bài C khác chỉ phủ một phần các module sau. Khung 96 bài chưa phải 96 bài đã viết.
+
+Đường mới: `/academy/roadmap` → **Bắt đầu từ số 0** → `/learn/M01-L01`. Mục tiêu/thời gian là tùy chọn, chưa có kiểm tra xếp lớp. M01: bài mới L01 → C01 (L02) → C02 (L03) → bài mới L04/L05/L06. M02: C03 (L01) → bài mới L02 → C04 (L03) → bài mới L04 → C05 (L05) → bài mới L06. ID C/F, slug cũ và dữ liệu lịch sử được giữ; alias M dùng cùng session canonical.
+
+Mỗi bài đã mở có course/flashcards/quiz; C01/C02 thêm đường qua F01, các bài C có mini lab phù hợp sẵn có. Course và quiz dùng chung câu hỏi/nháp/lần nộp; lịch thẻ lưu riêng theo card/revision. Thẻ là tự nhớ thuật ngữ, chưa chứng minh kỹ năng thực hành. M01-L01/L06 và M02-L06 có bài viết lưu theo rubric, trạng thái **unreviewed**. Không cấp XP hoặc giấy hoàn thành từ demo.
+
+Trong lesson workspace, mini lab lưu cả nháp/phản hồi qua reload và đổi mode; `/challenges` độc lập là sandbox không gắn một bài. `/practice` có thẻ đến hạn và sổ câu sai kèm concept/lý do. Scheduler thử nghiệm 1/3/7 ngày dùng khoảng thời gian UTC, không gọi FSRS hoặc lịch tối ưu; giữ tối đa 200 review events gần nhất và bản lịch từng card/revision.
+
+Validator hiện kiểm mục tiêu gộp theo phạm vi bài và assessment thuộc bài canonical. Chưa có ma trận chấm độc lập mọi kỹ năng nhỏ hoặc review thực hành chuyên gia. M03 trở đi cần mở rộng đúng độ sâu; giấy hoàn thành, review server và đồng bộ là các milestone sau. Không cài Knowns.
+
+## Bản nền trước lộ trình M — giữ để đối chiếu
+
 Cập nhật theo registry thực ngày 09/11/2026: **12 bài, 48 câu hỏi**, mỗi bài 4 câu. Có 5 dạng câu hỏi: chọn một, chọn nhiều, nhập số kèm đơn vị, ghép cặp và câu mở dùng rubric tự kiểm. Số lượng này là thống kê dữ liệu nội dung, không phải kết quả kiểm thử hay chứng nhận chất lượng chuyên môn.
 
 Mọi bài hiện có `sourceStatus: source-checked`, `expertReviewStatus: none`, `publicationScope: personal-preview`. Người học có thể đọc và thử mà không cần tài khoản. Thời lượng trên giao diện là ước tính; đọc bài hoặc bấm hoạt động không tự chứng minh đã hiểu.

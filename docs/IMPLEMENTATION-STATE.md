@@ -1,5 +1,28 @@
 # Trạng thái triển khai
 
+## Industrial UI / nhiều sản phẩm — 10/11/2026
+
+- Ưu tiên hiện tại là V0–V4 của [đặc tả Industrial](MECHVERSE_Industrial_UI_Multi_Product_Explorer_Prompt.md). M03, mở rộng giáo trình, auth/server progress, AI Tutor, giấy hoàn thành và Knowns tạm hoãn. Phần học cũ vẫn hoạt động và giữ key dữ liệu.
+- `/products` có ba mẫu tương tác thuộc ba nhóm: MV-LK02 locker, MV-WB01 workbench và EDU-FAN-01 demo. Hai nhóm vỏ tủ/bồn rửa là research, chưa có asset/CTA 3D. Preview là ảnh render của đúng model, catalog không tạo Canvas/tải cả thư viện GLB. Có search không dấu, filter nhóm/trạng thái.
+- Locker 30 occurrence với tấm có chiều dày, khe thoáng xuyên, mép hồi, khay/tai đỡ, bản lề/chốt, tay nắm, khóa/cam và ốc đúng vị trí. Hai cửa mở riêng quanh trục bản lề 0–105°. Workbench 16 occurrence: khung ống rỗng/giằng hàn cố định, tai đỡ có lỗ, mặt có hốc/lỗ bu lông, tám cụm fastener riêng, khay và chân. Xem [spec trước khi dựng](INDUSTRIAL-ASSEMBLIES.md).
+- Hai mẫu mới là **thiết kế minh họa MECHVERSE**, chưa chế tạo hoặc duyệt kỹ thuật; không gắn hãng, cấp vật liệu, tải, IP hay chứng nhận. Quạt vẫn là demo giản lược, không đổi thành sản phẩm thật. Asset hãng chưa đủ điều kiện tích hợp public; [sourcing](ASSET-SOURCING.md) ghi rõ ứng viên/giới hạn.
+- Shared Viewer phục vụ cả F01 cũ và workspace Studio/CAD mới. Canvas/ánh sáng studio được dùng lại khi đổi mẫu; fetch cũ abort, scene cũ dispose. CAD dùng feature edges, Studio giữ roughness/metalness theo profile và vân gỗ gốc. Rest/joint/explode/shading/visibility là state riêng; vỏ/khung cố định không tách tùy ý. Reset không xóa bài làm.
+- Workspace có cây/search/parent/selection, inspector về vai trò/liên kết/nguồn/điều chưa biết; camera presets, focus, isolate/hide, nhãn, tách cụm/reset và controls theo capability. Mobile dùng tab, keyboard/reduced motion/fallback được kiểm trong QA. Cửa mở và explode là tổ hợp loại trừ có giải thích ngắn.
+- Giữ dependencies và Yarn/start/terminal profile. Model mới được tái tạo bằng Three/GLTFExporter hiện có; không cài thư viện mới. GLB index lại trong từng occurrence giảm byte mà giữ triangle/binding; bản trước tối ưu được lưu riêng. Viewer vẫn có warning 500 kB, không đổi limit. Kết quả build/test/đo production và ảnh thực ở [QA](QA-REPORT.md), [pipeline](3D-PIPELINE.md).
+
+## Lộ trình và modes — cập nhật 09/11/2026
+
+- Đặc tả đầy đủ ở [CURRICULUM-LEARNING-MODES](CURRICULUM-LEARNING-MODES.md); [coverage](CURRICULUM-COVERAGE.md) có 96 phạm vi core, 5 nhánh và yêu cầu bổ trợ. `/academy/roadmap` có đầu ra/tiên quyết, trạng thái đã viết/một phần/chưa mở và nút bắt đầu M01-L01.
+- Registry có 19 bài, 64 câu hỏi, 20 nguồn. M01/M02 mỗi module sáu bài nhập môn có nội dung; bảy bài kế thừa về sau chưa hoàn thiện phạm vi module. Alias giữ ID C01–C12/slug và key F01, không seed trùng.
+- Mode course/cards/quiz dùng chung phiên bài; C01/C02 đi qua Explorer F01 rồi quay lại. Các mini lab trong bài lưu input/feedback; sandbox challenges độc lập vẫn tạm thời. Bài viết theo rubric lưu unreviewed; không phát XP hoặc giấy từ kết quả demo.
+- Academy v1 được mở rộng bằng trường tùy chọn `learning.version: 1`: vị trí/mode/cardIndex, lịch card/revision, review events (200 gần nhất), practicals/archive, activity/archive và mục tiêu/thời gian onboarding. Bản v1 cũ không có learning vẫn đọc nguyên dữ liệu. Import/export bao gồm dữ liệu mới; parser kiểm cấu trúc/giới hạn. F01 giữ key riêng.
+- Scheduler interface đơn giản dùng khoảng ngày 24h ở UTC, cấu hình 1/3/7 ngày thử nghiệm. Self-rating thẻ không tạo attempt/hoàn thành thực hành. Lesson revision cũ vào archive; thực hành/mini lab revision cũ giữ khi viết bản mới; lịch card cũ tồn tại riêng và không dùng làm bằng chứng bản mới.
+- Mục tiêu hiện được tổng hợp theo bài/phạm vi; chưa chấm độc lập toàn bộ kỹ năng nhỏ. Chưa có server progress/auth/AI/review thực hành, certificate hoặc đồng bộ. Atlas và Knowns không là dependency cho đường học local.
+
+Kết quả kiểm lần này và giới hạn ở đầu [QA-REPORT](QA-REPORT.md). Phần dưới là snapshot trước thay đổi lộ trình, giữ để đối chiếu.
+
+## Snapshot trước lộ trình
+
 Đối chiếu mã nguồn ngày **09/11/2026**. Kiểm tích hợp mới đạt FE23/23, BE9/9, browser29/29 và hai Yarn build. Chi tiết môi trường và giới hạn ở [QA-REPORT.md](QA-REPORT.md); U3 còn Blocked và tối ưu Viewer mới đạt một phần.
 
 ## Những phần đã có trong mã nguồn

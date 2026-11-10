@@ -19,20 +19,54 @@ import {
 import { gradeAnswer } from "./quiz";
 import type { Answer, Question } from "./types";
 import Activities, { LessonDiagram } from "./Activities";
+import { slotFor, nextSlot, modesFor } from "./curriculum";
+import { setLearningPosition, objectiveState } from "./learning";
+import { ModePicker, Flashcards, Practical } from "./LearningModes";
+import BeginnerDiagram from "./BeginnerDiagram";
+import { stateLabels } from "./Roadmap";
+import { ActivityPersistence } from "./ActivityPersistence";
 
 export default function LessonWorkspace({ slug }: { slug: string }) {
   const lesson = findLesson(slug),
     { progress, update } = useProgress(),
     resultRef = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
-    if (lesson) update((p) => ensureSession(p, lesson));
+    if (lesson)
+      update((p) => {
+        p = ensureSession(p, lesson);
+        const saved = p.learning?.positions[lesson.id];
+        const current = saved?.revision === lesson.revision ? saved : undefined;
+        const hash = location.hash.slice(1);
+        const section = [
+          "theory",
+          "activity",
+          "quiz",
+          "sources",
+          "practical",
+        ].includes(hash)
+          ? hash
+          : (current?.section ?? "theory");
+        const needsCourse = [
+          "theory",
+          "activity",
+          "quiz",
+          "practical",
+        ].includes(hash);
+        return setLearningPosition(
+          p,
+          lesson,
+          needsCourse ? "course" : (current?.mode ?? "course"),
+          section,
+        );
+      });
   }, [lesson?.id, lesson?.revision, update]);
   useEffect(() => {
-    if (location.hash)
+    const section =
+      location.hash.slice(1) ||
+      progress.learning?.positions[lesson?.id ?? ""]?.section;
+    if (section)
       requestAnimationFrame(() =>
-        document
-          .getElementById(location.hash.slice(1))
-          ?.scrollIntoView({ block: "start" }),
+        document.getElementById(section)?.scrollIntoView({ block: "start" }),
       );
   }, [lesson?.id]);
   if (!lesson)
@@ -46,7 +80,14 @@ export default function LessonWorkspace({ slug }: { slug: string }) {
     review = session?.phase === "review",
     last = session?.attempts.at(-1),
     automatic = lesson.questions.filter((q) => q.kind !== "open"),
-    next = lessons[lessons.indexOf(lesson) + 1];
+    next = nextSlot(lesson.id),
+    slot = slotFor(lesson.id),
+    position = progress.learning?.positions[lesson.id],
+    mode =
+      position?.revision === lesson.revision &&
+      modesFor(lesson).includes(position.mode)
+        ? position.mode
+        : "course";
   function submit() {
     if (!lesson) return;
     update((p) => submitSession(p, lesson));
@@ -54,12 +95,15 @@ export default function LessonWorkspace({ slug }: { slug: string }) {
   }
   return (
     <div className="lesson-workspace" key={lesson.id}>
-      <Link className="a-back" href="/academy/foundations">
+      <Link className="a-back" href="/academy/roadmap">
         <ArrowLeft size={16} />
-        Khóa nền tảng
+        Lộ trình học
       </Link>
       <header className="lesson-hero">
-        <span className="a-kicker">{lesson.id} / CƠ KHÍ TỪ SỐ 0</span>
+        <span className="a-kicker">
+          {slot?.id ?? lesson.id}{" "}
+          {slot?.id !== lesson.id ? `· ${lesson.id}` : ""} / CƠ KHÍ TỪ SỐ 0
+        </span>
         <h1>{lesson.title}</h1>
         <p>{lesson.deck}</p>
         <div className="a-heading-meta">
@@ -69,71 +113,138 @@ export default function LessonWorkspace({ slug }: { slug: string }) {
         </div>
       </header>
       <SaveStatus />
+      <ModePicker lesson={lesson} mode={mode} />
       <div className="lesson-reading-layout">
         <article className="lesson-reading">
-          <section className="objective-box">
-            <span className="a-kicker">SAU BÀI NÀY, BẠN CÓ THỂ</span>
-            <ul>
-              {lesson.objectives.map((o) => (
-                <li key={o}>
-                  <CheckCircle2 size={17} />
-                  {o}
-                </li>
-              ))}
-            </ul>
-          </section>
-          <section id="theory" className="theory-section">
-            <h2>Hiểu từ điều quen thuộc</h2>
-            {lesson.blocks.map((b, i) => (
-              <section
-                key={b.id}
-                className={`theory-block ${b.kind ?? "theory"}`}
+          {mode === "cards" && <Flashcards lesson={lesson} />}
+          {mode === "explore" && (
+            <section className="f01-bridge">
+              <h2>Quan sát trên F01</h2>
+              <p>
+                Chọn cánh, so cây cấu tạo và phân loại theo quy ước mô hình. Bài
+                tự kiểm của mục tiêu này vẫn ở tab Luyện quiz. F01 lưu key
+                riêng, không tự chuyển thành điểm bài này.
+              </p>
+              <Link
+                className="a-button"
+                href={`/explorer?lesson=F01&from=${lesson.id}`}
               >
-                <h3>{b.title}</h3>
-                {b.body.map((p, j) => (
-                  <p key={j}>{p}</p>
-                ))}
-                {b.diagram && (
-                  <figure>
-                    <LessonDiagram kind={b.diagram} />
-                    <figcaption>
-                      Sơ đồ tự dựng · Giả thiết giáo dục, không phải bản vẽ chế
-                      tạo.
-                    </figcaption>
-                  </figure>
-                )}
-                <div className="inline-sources">
-                  Đối chiếu:{" "}
-                  {b.sourceRefs.map((id) => (
-                    <a key={id} href={`#source-${id}`}>
-                      {sources.find((s) => s.id === id)?.publisher ?? id}
-                    </a>
-                  ))}
-                </div>
-              </section>
-            ))}
-          </section>
-          {(lesson.id === "C01" || lesson.id === "C02") && (
-            <Link className="f01-bridge" href="/explorer?lesson=F01">
-              <BookOpen size={24} />
-              <div>
-                <strong>Chạm vào cấu tạo với bài F01</strong>
-                <span>
-                  Mở mô hình quạt giáo dục; bài làm F01 trước đây vẫn giữ
-                  nguyên.
-                </span>
-              </div>
-              <ArrowRight size={20} />
-            </Link>
+                Mở F01 và quay lại
+              </Link>
+            </section>
           )}
-          <section id="activity">
+          <div hidden={mode !== "course"}>
+            <section className="objective-box">
+              <span className="a-kicker">SAU BÀI NÀY, BẠN CÓ THỂ</span>
+              <ul>
+                {lesson.objectives.map((o) => (
+                  <li key={o}>
+                    <CheckCircle2 size={17} />
+                    {o}
+                  </li>
+                ))}
+              </ul>
+            </section>
+            <section id="theory" className="theory-section">
+              <h2>Hiểu từ điều quen thuộc</h2>
+              {lesson.id.startsWith("M") && <BeginnerDiagram id={lesson.id} />}
+              {lesson.blocks.map((b, i) => (
+                <section
+                  key={b.id}
+                  className={`theory-block ${b.kind ?? "theory"}`}
+                >
+                  <h3>{b.title}</h3>
+                  {b.body.map((p, j) => (
+                    <p key={j}>{p}</p>
+                  ))}
+                  {b.diagram && (
+                    <figure>
+                      <LessonDiagram kind={b.diagram} />
+                      <figcaption>
+                        Sơ đồ tự dựng · Giả thiết giáo dục, không phải bản vẽ
+                        chế tạo.
+                      </figcaption>
+                    </figure>
+                  )}
+                  <div className="inline-sources">
+                    Đối chiếu:{" "}
+                    {b.sourceRefs.map((id) => (
+                      <a key={id} href={`#source-${id}`}>
+                        {sources.find((s) => s.id === id)?.publisher ?? id}
+                      </a>
+                    ))}
+                  </div>
+                </section>
+              ))}
+            </section>
+            {(lesson.id === "C01" || lesson.id === "C02") && (
+              <Link
+                className="f01-bridge"
+                href={`/explorer?lesson=F01&from=${lesson.id}`}
+                onClick={() =>
+                  update((p) =>
+                    setLearningPosition(p, lesson, "explore", "theory"),
+                  )
+                }
+              >
+                <BookOpen size={24} />
+                <div>
+                  <strong>Chạm vào cấu tạo với bài F01</strong>
+                  <span>
+                    Mở mô hình quạt giáo dục; bài làm F01 trước đây vẫn giữ
+                    nguyên.
+                  </span>
+                </div>
+                <ArrowRight size={20} />
+              </Link>
+            )}
+            {lesson.mistakes && (
+              <section className="observation-task">
+                <h2>Lỗi dễ gặp</h2>
+                <ul>
+                  {lesson.mistakes.map((m) => (
+                    <li key={m}>{m}</li>
+                  ))}
+                </ul>
+              </section>
+            )}
+          </div>
+          <section
+            id="activity"
+            hidden={
+              !modesFor(lesson).includes("lab") ||
+              (mode !== "course" && mode !== "lab")
+            }
+            onClickCapture={(event) => {
+              if (
+                (event.target as HTMLElement)
+                  .closest("a")
+                  ?.getAttribute("href") === "#theory"
+              ) {
+                update((p) =>
+                  setLearningPosition(p, lesson, "course", "theory"),
+                );
+                requestAnimationFrame(() =>
+                  document
+                    .getElementById("theory")
+                    ?.scrollIntoView({ block: "start" }),
+                );
+              }
+            }}
+          >
             <div className="a-section-heading">
               <h2>Thử bằng tay, hiểu bằng lý do</h2>
               <span>HOẠT ĐỘNG</span>
             </div>
-            <Activities kind={lesson.activity} />
+            <ActivityPersistence lesson={lesson}>
+              <Activities kind={lesson.activity} />
+            </ActivityPersistence>
           </section>
-          <section id="quiz" className="lesson-quiz">
+          <section
+            id="quiz"
+            className="lesson-quiz"
+            hidden={mode !== "course" && mode !== "quiz"}
+          >
             <span className="a-kicker">TỰ KIỂM · {lesson.id}</span>
             <h2>
               {review
@@ -176,6 +287,13 @@ export default function LessonWorkspace({ slug }: { slug: string }) {
                     ? " Câu mở dùng rubric tự kiểm riêng, không cộng vào số câu đúng."
                     : ""}
                 </p>
+                <p>
+                  Trạng thái mục tiêu:{" "}
+                  {stateLabels[objectiveState(progress, lesson)]}.{" "}
+                  {lesson.practicalRubric
+                    ? "Còn cần bài thực hành và review phù hợp."
+                    : "Kết quả chỉ phản ánh các câu hỏi và giả thiết của bài này."}
+                </p>
                 <button
                   className="a-button secondary"
                   onClick={() => update((p) => retrySession(p, lesson))}
@@ -190,7 +308,13 @@ export default function LessonWorkspace({ slug }: { slug: string }) {
               </div>
             )}
           </section>
-          <section className="observation-task">
+          <div hidden={mode !== "course" && mode !== "quiz"}>
+            <Practical lesson={lesson} />
+          </div>
+          <section
+            className="observation-task"
+            hidden={mode !== "course" || !!lesson.practicalRubric}
+          >
             <span className="a-kicker">MANG KIẾN THỨC RA NGOÀI MÀN HÌNH</span>
             <h2>Một việc nhỏ để tự quan sát</h2>
             <p>{lesson.observation}</p>
@@ -237,42 +361,64 @@ export default function LessonWorkspace({ slug }: { slug: string }) {
             })}
           </section>
           <nav className="lesson-next" aria-label="Tiếp tục học">
-            <Link href="/academy/foundations">Về lộ trình</Link>
-            {next && (
-              <Link className="a-button" href={`/learn/${next.slug}`}>
+            <Link href="/academy/roadmap">Về lộ trình</Link>
+            {next?.lessonId ? (
+              <Link className="a-button" href={`/learn/${next.id}`}>
                 Bài tiếp: {next.id}
                 <ArrowRight size={17} />
               </Link>
-            )}
+            ) : next ? (
+              <p>
+                {next.id}: Chưa mở. Bạn có thể ôn hoặc khám phá các bài đã có
+                trên lộ trình.
+              </p>
+            ) : null}
           </nav>
         </article>
         <aside className="lesson-aside">
           <h2>Bản đồ bài học</h2>
           <nav>
-            <a href="#theory">01 · Đọc và quan sát</a>
-            <a href="#activity">02 · Thử tương tác</a>
-            <a href="#quiz">03 · Tự kiểm</a>
-            <a href="#sources">04 · Nguồn và giới hạn</a>
+            {[
+              { section: "theory", label: "01 · Đọc và quan sát" },
+              { section: "quiz", label: "02 · Tự kiểm" },
+              { section: "sources", label: "03 · Nguồn và giới hạn" },
+            ].map((item) => (
+              <a
+                key={item.section}
+                href={`#${item.section}`}
+                onClick={() =>
+                  update((p) =>
+                    setLearningPosition(p, lesson, "course", item.section),
+                  )
+                }
+              >
+                {item.label}
+              </a>
+            ))}
           </nav>
           <h3>Nền tảng cần biết</h3>
-          {lesson.prerequisites.length ? (
-            lesson.prerequisites.map((id) => (
+          {(slot?.prerequisiteIds ?? lesson.prerequisites).length ? (
+            (slot?.prerequisiteIds ?? lesson.prerequisites).map((id) => (
               <Link key={id} href={`/learn/${findLesson(id)?.slug ?? id}`}>
-                {id} — {findLesson(id)?.title}
+                {id} —{" "}
+                {findLesson(id)?.title ??
+                  "Trong kế hoạch; bạn vẫn được xem trước"}
               </Link>
             ))
           ) : (
             <p>Có thể bắt đầu ngay. Không có bài tiên quyết.</p>
           )}
-          <h3>Thuật ngữ đầu tiên</h3>
-          <dl>
-            {lesson.terms.map((t) => (
-              <div key={t.term}>
-                <dt>{t.term}</dt>
-                <dd>{t.meaning}</dd>
-              </div>
-            ))}
-          </dl>
+          <div hidden={mode === "cards"}>
+            <h3>Thuật ngữ đầu tiên</h3>
+            <dl>
+              {lesson.terms.map((t) => (
+                <div key={t.term}>
+                  <dt>{t.term}</dt>
+                  <dd>{t.meaning}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
           <span className="preview-label">Nội dung học thử có nguồn</span>
         </aside>
       </div>

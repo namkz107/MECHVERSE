@@ -1,4 +1,18 @@
-# Hệ thống thiết kế Academy — 09/11/2026
+# Hệ thống thiết kế MECHVERSE
+
+## Industrial Studio — cập nhật 10/11/2026
+
+`/products` là thư viện editorial: graphite/forest ở hero, nền trắng ấm, render đúng asset, chữ lớn và khoảng thở. Có ba asset mở được và hai nhóm nghiên cứu; filter/search/status không tạo Canvas hoặc tải GLB. Card nghiên cứu không có CTA 3D. Nhãn thiết kế minh họa/demo tách khỏi trạng thái có thể mở. Font Be Vietnam Pro và các đường học hiện có được giữ.
+
+Workspace nhiều sản phẩm tại `/explorer?product=locker|workbench|fan` dùng layout cây–viewport–inspector. Palette: nền `#F3F3ED`, chữ `#243331`, muted `#586660`, line `#D6DBD4`, action/selection teal `#263D38`/`#17685F`. Không dùng màu selection làm cấp vật liệu; Studio giữ vật liệu diễn họa, CAD dùng xám và feature edges thay wireframe tam giác. Mode shading và explode/joint là state riêng.
+
+Viewport là vùng chính; hai panel có thể thu gọn. Camera Isometric/Front/Side/Top/Under/Fit, focus, isolate, nhãn, reset và tách cụm được nhóm theo nhiệm vụ. Locker có mở từng cửa; workbench không có nút quay. Chỉ hiện một callout của chi tiết đang chọn để hạn chế chồng nhãn. Inspector có vai trò, cụm cha, kiểu liên kết, nguồn và điều chưa biết. Explode gọi là trình bày cấu tạo, không là hướng dẫn tháo lắp.
+
+Dưới 700px, panel thành ba tab Mô hình/Cấu tạo/Thông tin, hỗ trợ Tab và Arrow/Home/End. Có nhãn, focus visible, native range/select và cách thao tác từ cây khi WebGL lỗi. Camera bỏ chuyển tiếp theo reduced-motion; chuyển động quay chỉ chạy sau thao tác bật, có pause và dừng khi tab browser ẩn. Phím F/R/C bỏ qua vùng nhập liệu và controls. Scroll trang vẫn native; orbit trong Canvas, có vùng ngoài Canvas để cuộn trang.
+
+Home có đường vào bộ sưu tập, navigation Academy/Dashboard dẫn tới thư viện. Phần học dùng palette/vùng đọc quen thuộc và giữ trạng thái; không thay đổi nội dung M03 hoặc auth/server/AI. Các hình trong `docs/qa/industrial/` là render app thực, không phải mockup. Kết quả và giới hạn thiết bị ở [QA](QA-REPORT.md).
+
+## Snapshot Academy — 09/11/2026
 
 Academy là điểm bắt đầu; Explorer là sandbox hỗ trợ quan sát. Home, catalog, lesson workspace, Practice, Challenges, Knowledge và Dashboard dùng cùng nền ivory, chữ charcoal, mảng forest và điểm nhấn sage/copper. Bài học là nội dung chính, không dùng thẻ khóa rỗng hoặc số liệu thành tích giả.
 

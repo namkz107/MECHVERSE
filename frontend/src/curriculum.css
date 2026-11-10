@@ -1,0 +1,245 @@
+.roadmap-start {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 48px;
+  padding: 36px;
+  background: var(--a-surface, #f0f1e9);
+  border: 1px solid #d8dece;
+  border-radius: 16px;
+  margin: 24px 0 56px;
+}
+.roadmap-start h2 {
+  font-size: clamp(24px, 3vw, 36px);
+  line-height: 1.25;
+}
+.roadmap-start label {
+  display: block;
+  margin: 18px 0;
+  font-weight: 600;
+}
+.roadmap-start select {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  padding: 12px;
+  border: 1px solid #aab5a2;
+  background: white;
+  border-radius: 8px;
+  margin-top: 8px;
+  font: inherit;
+}
+.roadmap-start aside {
+  padding: 28px;
+  background: #e1e9d4;
+  border-radius: 12px;
+  align-self: start;
+}
+.roadmap-start aside a {
+  margin: 16px 0;
+  display: flex;
+}
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.roadmap-module {
+  border: 1px solid #d8ddcf;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+}
+.roadmap-module header {
+  padding: 24px;
+  background: #f4f5ee;
+}
+.roadmap-module h2 {
+  font-size: 24px;
+  margin: 10px 0;
+}
+.module-prerequisites {
+  font-size: 14px;
+  color: #52604c;
+}
+.roadmap-module ol {
+  padding: 0 24px;
+  list-style: none;
+}
+.roadmap-module li {
+  padding: 18px 0;
+  border-bottom: 1px solid #e5e8df;
+  display: grid;
+  gap: 8px;
+}
+.roadmap-module li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.roadmap-module li a strong {
+  flex: 1;
+}
+.roadmap-module li small {
+  color: #52604c;
+  line-height: 1.6;
+}
+.roadmap-branches {
+  margin: 64px 0;
+}
+.roadmap-branches > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.roadmap-branches article {
+  padding: 24px;
+  background: #f1f3eb;
+  border-radius: 12px;
+}
+.learning-modes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+.learning-modes button {
+  font: inherit;
+  min-height: 44px;
+  padding: 10px 18px;
+  border: 1px solid #a6b197;
+  background: #fff;
+  border-radius: 24px;
+  cursor: pointer;
+}
+.learning-modes button[aria-pressed="true"] {
+  background: #263d32;
+  color: #fff;
+  border-color: #263d32;
+}
+.mode-note {
+  font-size: 14px;
+  line-height: 1.7;
+  max-width: 900px;
+}
+.flashcard-panel,
+.practical-task {
+  padding: 28px;
+  border: 1px solid #c7d3ba;
+  background: #f5f7ed;
+  border-radius: 12px;
+  margin: 28px 0;
+}
+.flashcard-panel h2 {
+  font-size: 28px;
+  line-height: 1.4;
+}
+.flashcard-answer {
+  padding: 16px;
+  background: #e0e9ce;
+  border-radius: 8px;
+  margin: 24px 0;
+}
+.flashcard-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+.practical-task label {
+  display: block;
+  font-weight: 600;
+}
+.practical-task textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+  padding: 16px;
+  margin: 12px 0;
+  border: 1px solid #8c9a82;
+  border-radius: 8px;
+  background: #fff;
+  font: inherit;
+  line-height: 1.7;
+}
+.practical-task li {
+  margin: 8px 0;
+}
+.beginner-diagram {
+  margin: 24px 0;
+  padding: 12px;
+  background: #f1f4e9;
+  border-radius: 12px;
+}
+.beginner-diagram svg {
+  width: 100%;
+  height: auto;
+  max-height: 260px;
+}
+.beginner-diagram text {
+  font-family: inherit;
+  font-size: 14px;
+  fill: #253728;
+}
+.beginner-diagram figcaption {
+  font-size: 13px;
+  color: #53614d;
+}
+.learning-modes button:focus-visible,
+.roadmap-page a:focus-visible,
+.roadmap-page select:focus-visible {
+  outline: 3px solid #9b5c22;
+  outline-offset: 4px;
+}
+.lesson-reading [hidden] {
+  display: none !important;
+}
+.review-due {
+  padding: 28px;
+  background: #eff3e5;
+  border-radius: 12px;
+  margin: 28px 0;
+}
+.review-due a {
+  display: block;
+  padding: 10px 0;
+}
+.a-text-button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+@media (max-width: 800px) {
+  .roadmap-start {
+    grid-template-columns: 1fr;
+    padding: 22px;
+    gap: 24px;
+  }
+  .module-grid,
+  .roadmap-branches > div {
+    grid-template-columns: 1fr;
+  }
+  .learning-modes button {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+  .flashcard-panel,
+  .practical-task {
+    padding: 18px;
+  }
+  .academy-header {
+    flex-wrap: wrap;
+  }
+  .academy-header nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .roadmap-page *,
+  .learning-modes * {
+    scroll-behavior: auto;
+    transition: none;
+  }
+}

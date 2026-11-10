@@ -62,6 +62,8 @@ export type Lesson = {
   activity: ActivityKind;
   questions: Question[];
   observation: string;
+  practicalRubric?: string[];
+  mistakes?: string[];
   sourceRefs: string[];
   sourceStatus: "source-checked" | "needs-recheck";
   expertReviewStatus: "none";

@@ -2,6 +2,7 @@ import type { Answer, Lesson } from "./types";
 import type { LessonState } from "../lesson/lesson";
 import { restoreLesson, STORAGE_KEY as F01_KEY } from "../lesson/lesson";
 import { gradeAnswer } from "./quiz";
+import { validLearning, type LearningState } from "./learning";
 export const PROGRESS_KEY = "mechverse:academy:progress";
 export type Attempt = {
   id: string;
@@ -22,6 +23,7 @@ export type Progress = {
   sessions: Record<string, Session>;
   archives: Session[];
   legacyF01?: LessonState;
+  learning?: LearningState;
 };
 export function initialProgress(): Progress {
   return { version: 1, sessions: {}, archives: [] };
@@ -180,6 +182,7 @@ export function parseProgress(raw: string): Progress | null {
     )
       return null;
     if (p.legacyF01) p.legacyF01 = restoreLesson(JSON.stringify(p.legacyF01));
+    if (p.learning !== undefined && !validLearning(p.learning)) return null;
     return p;
   } catch {
     return null;

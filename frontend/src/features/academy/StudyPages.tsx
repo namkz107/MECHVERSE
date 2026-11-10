@@ -14,14 +14,16 @@ import { useProgress, SaveStatus } from "./ProgressContext";
 import Activities from "./Activities";
 import { restoreLesson, STORAGE_KEY as F01_KEY } from "../lesson/lesson";
 import type { ActivityKind } from "./types";
+import { dueCards, emptyLearning, setLearningPosition } from "./learning";
+import { slotFor } from "./curriculum";
 export default function StudyPages({ page }: { page: string }) {
-  const { progress, importData, exportData } = useProgress(),
+  const { progress, importData, exportData, update } = useProgress(),
     [query, setQuery] = useState(""),
     [message, setMessage] = useState(""),
     [activity, setActivity] = useState<ActivityKind>("matching");
   const errors = lessons.flatMap((l) => {
     const s = progress.sessions[l.id],
-      a = s?.attempts.at(-1);
+      a = s?.revision === l.revision ? s.attempts.at(-1) : undefined;
     return a
       ? (a?.incorrectIds ?? []).map((id) => ({
           lesson: l,
@@ -43,6 +45,11 @@ export default function StudyPages({ page }: { page: string }) {
         : page === "knowledge"
           ? "Một khái niệm, nhiều liên hệ."
           : "Góc học tập của bạn.";
+  const due = dueCards(progress, lessons);
+  const recent = Object.entries(progress.learning?.positions ?? {})
+    .sort(([, a], [, b]) => b.updatedAt.localeCompare(a.updatedAt))
+    .find(([id]) => findLesson(id));
+  const resume = recent ? findLesson(recent[0]) : working[0];
   const activityList: { kind: ActivityKind; title: string; id: string }[] = [
     { kind: "matching", title: "Ghép bộ phận & chức năng", id: "C02" },
     { kind: "units", title: "Xưởng đơn vị & đường kính", id: "C03" },
@@ -125,16 +132,16 @@ export default function StudyPages({ page }: { page: string }) {
           </div>
           <section className="study-continue">
             <span className="a-kicker">BƯỚC TIẾP THEO</span>
-            <h2>{working[0]?.title ?? "Một điều mới để bắt đầu."}</h2>
+            <h2>{resume?.title ?? "Một điều mới để bắt đầu."}</h2>
             <p>
-              {working[0]?.deck ??
-                "Mở C01 để phân biệt sản phẩm, cụm và chi tiết theo cấu tạo được mô tả."}
+              {resume?.deck ??
+                "Bắt đầu M01-L01 bằng một đồ vật quen thuộc, chưa cần kiến thức cơ khí."}
             </p>
             <Link
               className="a-button"
-              href={`/learn/${working[0]?.slug ?? lessons[0].slug}`}
+              href={resume ? `/learn/${resume.id}` : "/academy/roadmap"}
             >
-              {working.length ? "Tiếp tục bài học" : "Bắt đầu C01"}
+              {resume ? "Tiếp tục bài học" : "Bắt đầu từ số 0"}
               <ArrowRight size={17} />
             </Link>
           </section>
@@ -235,6 +242,41 @@ export default function StudyPages({ page }: { page: string }) {
       )}
       {page === "practice" && (
         <>
+          <section className="review-due">
+            <h2>Ôn đến hạn</h2>
+            <p>
+              {due.length} thẻ đến hạn trên thiết bị này. Thời điểm lưu bằng
+              UTC, hiển thị theo múi giờ máy; lịch 1/3/7 ngày là cấu hình thử
+              nghiệm.
+            </p>
+            {due.map((card) => {
+              const l = findLesson(card.lessonId)!;
+              return (
+                <Link
+                  key={card.id}
+                  href={`/learn/${l.id}`}
+                  onClick={() =>
+                    update((p) =>
+                      setLearningPosition(
+                        p,
+                        l,
+                        "cards",
+                        "theory",
+                        Number(card.id.split("-T").at(-1)) - 1,
+                      ),
+                    )
+                  }
+                >
+                  {slotFor(l.id)?.id} · {card.front}
+                </Link>
+              );
+            })}
+            {!due.length && (
+              <Link href="/academy/roadmap">
+                Tiếp tục lộ trình hoặc mở flashcards trong bài
+              </Link>
+            )}
+          </section>
           <div className="a-section-heading">
             <h2>Cần xem lại từ bài làm của bạn</h2>
             <span>{errors.length} câu</span>
@@ -248,9 +290,9 @@ export default function StudyPages({ page }: { page: string }) {
                   </span>
                   <h3>{question?.prompt}</h3>
                   <p>
-                    Quay lại phần lời giải, đọc lý do, rồi chọn “Luyện lại bài
-                    này” để có một lượt làm mới. Không có điểm cộng từ việc bấm
-                    lặp.
+                    Khái niệm: {lesson.conceptIds.join(", ")}.{" "}
+                    {question?.rationale} Quay lại bài để xem đáp án đã nộp, tìm
+                    nguyên nhân và thử lại. Không cộng điểm từ bấm lặp.
                   </p>
                   <Link
                     className="a-text-link"

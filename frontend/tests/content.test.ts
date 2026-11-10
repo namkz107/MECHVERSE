@@ -12,8 +12,8 @@ import {
   ensureSession,
 } from "../src/features/academy/progress";
 describe("published personal-preview learning package", () => {
-  it("contains twelve teachable lessons with resolving evidence and forty meaningful questions", () => {
-    expect(lessons.map((l) => l.id)).toEqual([
+  it("preserves twelve original lessons and adds sourced beginner lessons", () => {
+    expect(lessons.slice(0, 12).map((l) => l.id)).toEqual([
       "C01",
       "C02",
       "C03",
@@ -27,6 +27,7 @@ describe("published personal-preview learning package", () => {
       "C11",
       "C12",
     ]);
+    expect(lessons.length).toBe(19);
     expect(
       lessons.reduce((sum, l) => sum + l.questions.length, 0),
     ).toBeGreaterThanOrEqual(40);

@@ -10,13 +10,21 @@ import { Link, navigate, useRoute } from "./navigation";
 import { ProgressProvider } from "./features/academy/ProgressContext";
 import RenderBoundary from "./components/RenderBoundary";
 import "./academy.css";
+import "./curriculum.css";
+import "./features/explorer/catalog.css";
+import { ExploreReturn } from "./features/academy/LearningModes";
 const Home = lazy(() => import("./features/academy/Home"));
 const Academy = lazy(() => import("./features/academy/Academy"));
+const Roadmap = lazy(() => import("./features/academy/Roadmap"));
 const LessonWorkspace = lazy(
   () => import("./features/academy/LessonWorkspace"),
 );
 const StudyPages = lazy(() => import("./features/academy/StudyPages"));
 const Explorer = lazy(() => import("./features/explorer/ExplorerApp"));
+const IndustrialExplorer = lazy(
+  () => import("./features/explorer/IndustrialExplorer"),
+);
+const ProductCatalog = lazy(() => import("./features/explorer/ProductCatalog"));
 function lessonSlug(path: string) {
   try {
     return decodeURIComponent(path.slice(7));
@@ -87,18 +95,28 @@ function RoutedApp() {
             <GraduationCap size={17} />
             Học cơ khí
           </Link>
-          <span>Sandbox 3D · Mô hình giáo dục giản lược</span>
+          <Link href="/products">Thư viện sản phẩm · Studio / CAD</Link>
           <Link href="/dashboard">Tiến độ học</Link>
+          <ExploreReturn />
         </div>
         <RenderBoundary key={path} fallback={<PageError />}>
           <Suspense fallback={<PageLoading />}>
-            <Explorer />
+            {new URLSearchParams(location.search).get("product") &&
+            new URLSearchParams(location.search).get("lesson") !== "F01" ? (
+              <IndustrialExplorer
+                assetId={new URLSearchParams(location.search).get("product")!}
+              />
+            ) : (
+              <Explorer />
+            )}
           </Suspense>
         </RenderBoundary>
       </div>
     );
   let content;
   if (path === "/") content = <Home />;
+  else if (path === "/products") content = <ProductCatalog />;
+  else if (path === "/academy/roadmap") content = <Roadmap />;
   else if (path === "/academy" || path === "/academy/foundations")
     content = <Academy course={path.endsWith("/foundations")} />;
   else if (path.startsWith("/learn/"))
@@ -128,10 +146,20 @@ function RoutedApp() {
         </Link>
         <nav aria-label="Điều hướng học tập">
           <Link
-            aria-current={path.startsWith("/academy") ? "page" : undefined}
+            aria-current={
+              path.startsWith("/academy") && path !== "/academy/roadmap"
+                ? "page"
+                : undefined
+            }
             href="/academy"
           >
             Học cơ khí
+          </Link>
+          <Link
+            href="/academy/roadmap"
+            aria-current={path === "/academy/roadmap" ? "page" : undefined}
+          >
+            Lộ trình
           </Link>
           <Link
             aria-current={path === "/practice" ? "page" : undefined}
@@ -140,8 +168,8 @@ function RoutedApp() {
             Luyện tập
           </Link>
           <Link
-            aria-current={path === "/explorer" ? "page" : undefined}
-            href="/explorer"
+            aria-current={path === "/products" ? "page" : undefined}
+            href="/products"
           >
             Khám phá 3D
           </Link>
@@ -175,7 +203,7 @@ function RoutedApp() {
           </p>
         </div>
         <nav aria-label="Điều hướng cuối trang">
-          <Link href="/academy/foundations">Bắt đầu từ số 0</Link>
+          <Link href="/academy/roadmap">Bắt đầu từ số 0</Link>
           <Link href="/challenges">Phòng thực hành</Link>
           <Link href="/knowledge">Nguồn & thuật ngữ</Link>
           <Link href="/explorer?lesson=F01">Bài F01 đã có</Link>

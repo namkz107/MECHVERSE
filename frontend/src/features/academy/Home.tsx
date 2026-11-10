@@ -7,13 +7,17 @@ import {
   MousePointer2,
 } from "lucide-react";
 import { Link } from "../../navigation";
-import { lessons } from "./content";
+import { lessons, findLesson } from "./content";
 import { useProgress } from "./ProgressContext";
 export default function Home() {
   const { progress } = useProgress();
+  const recent = Object.entries(progress.learning?.positions ?? {})
+    .sort(([, a], [, b]) => b.updatedAt.localeCompare(a.updatedAt))
+    .find(([id]) => findLesson(id));
   const current =
+    (recent ? findLesson(recent[0]) : undefined) ??
     lessons.find((l) => progress.sessions[l.id]?.phase === "working") ??
-    lessons[0];
+    findLesson("M01-L01")!;
   return (
     <div className="academy-home">
       <section className="home-hero">
@@ -36,7 +40,7 @@ export default function Home() {
             Từng bài nhỏ, có lý thuyết, tương tác và lời giải để bạn tự kiểm.
           </p>
           <div className="hero-actions">
-            <Link className="a-button sage" href="/academy/foundations">
+            <Link className="a-button sage" href="/academy/roadmap">
               Bắt đầu từ số 0<ArrowUpRight size={19} />
             </Link>
             <Link className="hero-secondary" href={`/learn/${current.slug}`}>
@@ -96,6 +100,18 @@ export default function Home() {
         . Ảnh này không phải model quạt bàn EDU-FAN-01; không chứng minh nội
         thất.
       </div>
+      <section className="home-product-entry">
+        <div>
+          <strong>Studio / CAD — Thư viện sản phẩm</strong>
+          <p>
+            Locker hai ngăn, bàn cơ khí và quạt giáo dục. Quan sát chi tiết, thử
+            chuyển động và đọc liên kết.
+          </p>
+        </div>
+        <Link href="/products">
+          Mở thư viện sản phẩm <ArrowUpRight size={18} />
+        </Link>
+      </section>
       <section className="home-learning-intro">
         <div>
           <span className="a-kicker">KHÔNG CẦN BIẾT TRƯỚC MỌI THỨ</span>

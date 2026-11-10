@@ -55,6 +55,9 @@ function useReducedMotion() {
 }
 
 export default function App() {
+  useEffect(() => {
+    explorerStore.getState().setAsset("fan");
+  }, []);
   const [page, setPage] = useState<"explorer" | "dashboard">(() =>
     new URLSearchParams(location.search).get("view") === "dashboard"
       ? "dashboard"

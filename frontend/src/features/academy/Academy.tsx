@@ -46,7 +46,7 @@ export default function Academy({ course = false }: { course?: boolean }) {
         </div>
       </header>
       {!course && (
-        <Link className="course-banner" href="/academy/foundations">
+        <Link className="course-banner" href="/academy/roadmap">
           <div>
             <span className="a-kicker">LỘ TRÌNH 01 · CHO NGƯỜI MỚI</span>
             <h2>Bắt đầu từ số 0</h2>

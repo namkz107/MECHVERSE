@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { lessons } from "../../src/features/academy/content";
 
-test("all twelve lessons render original readings, questions and source records", async ({
+test("all authored lessons render original readings, questions and source records", async ({
   page,
 }) => {
   const errors: string[] = [];
@@ -12,7 +12,9 @@ test("all twelve lessons render original readings, questions and source records"
     await expect(page.locator(".theory-block")).toHaveCount(
       lesson.blocks.length,
     );
-    await expect(page.locator(".a-question")).toHaveCount(4);
+    await expect(page.locator(".a-question")).toHaveCount(
+      lesson.questions.length,
+    );
     await expect(page.locator(".lesson-source-list details")).toHaveCount(
       lesson.sourceRefs.length,
     );

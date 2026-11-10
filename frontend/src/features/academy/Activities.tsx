@@ -1,4 +1,5 @@
-import { useId, useState, type ReactNode } from "react";
+import { useId, type ReactNode } from "react";
+import { useActivityState } from "./ActivityPersistence";
 import { gradeAnswer, torque } from "./quiz";
 import type { ActivityKind } from "./types";
 import "./activities.css";
@@ -133,8 +134,11 @@ function Frame({
 }
 
 function Matching() {
-  const [answer, setAnswer] = useState<Record<string, string>>({});
-  const [result, setResult] = useState<Feedback | null>(null);
+  const [answer, setAnswer] = useActivityState<Record<string, string>>(
+    "answer",
+    {},
+  );
+  const [result, setResult] = useActivityState<Feedback | null>("result", null);
   const prefix = useId();
   return (
     <Frame
@@ -227,10 +231,10 @@ const diameterVariants = [
   },
 ];
 function Numeric({ geometry }: { geometry: boolean }) {
-  const [variant, setVariant] = useState(0);
-  const [value, setValue] = useState("");
-  const [unit, setUnit] = useState("mm");
-  const [result, setResult] = useState<Feedback | null>(null);
+  const [variant, setVariant] = useActivityState("variant", 0);
+  const [value, setValue] = useActivityState("value", "");
+  const [unit, setUnit] = useActivityState("unit", "mm");
+  const [result, setResult] = useActivityState<Feedback | null>("result", null);
   const id = useId();
   const variants = geometry ? diameterVariants : unitVariants;
   const task = variants[variant];
@@ -317,11 +321,11 @@ function Numeric({ geometry }: { geometry: boolean }) {
 }
 
 function TorqueLab() {
-  const [force, setForce] = useState(20);
-  const [radius, setRadius] = useState(0.3);
-  const [angle, setAngle] = useState(90);
-  const [prediction, setPrediction] = useState("");
-  const [result, setResult] = useState<Feedback | null>(null);
+  const [force, setForce] = useActivityState("force", 20);
+  const [radius, setRadius] = useActivityState("radius", 0.3);
+  const [angle, setAngle] = useActivityState("angle", 90);
+  const [prediction, setPrediction] = useActivityState("prediction", "");
+  const [result, setResult] = useActivityState<Feedback | null>("result", null);
   const id = useId();
   const valid =
     force >= 0 &&
@@ -665,8 +669,8 @@ const choicesByKind: Partial<
 
 function ConceptChoice({ kind }: { kind: ActivityKind }) {
   const task = choicesByKind[kind] ?? choicesByKind.identify!;
-  const [answer, setAnswer] = useState<number | null>(null);
-  const [result, setResult] = useState<Feedback | null>(null);
+  const [answer, setAnswer] = useActivityState<number | null>("answer", null);
+  const [result, setResult] = useActivityState<Feedback | null>("result", null);
   const id = useId();
   return (
     <Frame title={task.title}>
@@ -725,8 +729,8 @@ function ConceptChoice({ kind }: { kind: ActivityKind }) {
 }
 
 function ProjectionChoice() {
-  const [answer, setAnswer] = useState("");
-  const [result, setResult] = useState<Feedback | null>(null);
+  const [answer, setAnswer] = useActivityState("answer", "");
+  const [result, setResult] = useActivityState<Feedback | null>("result", null);
   const id = useId();
   return (
     <Frame

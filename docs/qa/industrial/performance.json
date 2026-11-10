@@ -1,0 +1,563 @@
+{
+  "checkedAt": "2026-11-10T02:18:13.464Z",
+  "baseURL": "http://127.0.0.1:5175",
+  "conditions": "Chrome headless, Windows, SwiftShader, 1440x900, DPR 1, HTTP cache disabled, no throttling; resource bytes are browser Resource Timing (not FPS)",
+  "routes": [
+    {
+      "route": "/products",
+      "totals": {
+        "encoded": 410029,
+        "decoded": 719640,
+        "transfer": 414229
+      },
+      "resources": [
+        {
+          "name": "/assets/index-C_R5Nz-B.js",
+          "encoded": 111133,
+          "decoded": 355241,
+          "transfer": 111433
+        },
+        {
+          "name": "/assets/index-DTNpdLBD.css",
+          "encoded": 14694,
+          "decoded": 70686,
+          "transfer": 14994
+        },
+        {
+          "name": "/assets/ProductCatalog-C_IkIzvF.js",
+          "encoded": 2374,
+          "decoded": 5742,
+          "transfer": 2674
+        },
+        {
+          "name": "/assets/assets-Chr_gv0w.js",
+          "encoded": 4200,
+          "decoded": 10343,
+          "transfer": 4500
+        },
+        {
+          "name": "/assets/arrow-right-Dx1pGKQT.js",
+          "encoded": 161,
+          "decoded": 161,
+          "transfer": 461
+        },
+        {
+          "name": "/assets/search-CD3yEugx.js",
+          "encoded": 164,
+          "decoded": 164,
+          "transfer": 464
+        },
+        {
+          "name": "/favicon.ico",
+          "encoded": 0,
+          "decoded": 0,
+          "transfer": 300
+        },
+        {
+          "name": "/previews/workbench.png",
+          "encoded": 63557,
+          "decoded": 63557,
+          "transfer": 63857
+        },
+        {
+          "name": "/assets/be-vietnam-pro-vietnamese-400-normal-CRcqvyg1.woff2",
+          "encoded": 11532,
+          "decoded": 11532,
+          "transfer": 11832
+        },
+        {
+          "name": "/assets/be-vietnam-pro-vietnamese-600-normal-nyU-ZL2p.woff2",
+          "encoded": 12176,
+          "decoded": 12176,
+          "transfer": 12476
+        },
+        {
+          "name": "/assets/be-vietnam-pro-latin-600-normal-BZDkUTrt.woff2",
+          "encoded": 22032,
+          "decoded": 22032,
+          "transfer": 22332
+        },
+        {
+          "name": "/assets/be-vietnam-pro-latin-400-normal-PpnXBOrz.woff2",
+          "encoded": 21168,
+          "decoded": 21168,
+          "transfer": 21468
+        },
+        {
+          "name": "/previews/locker.png",
+          "encoded": 14464,
+          "decoded": 14464,
+          "transfer": 14764
+        },
+        {
+          "name": "/previews/fan.png",
+          "encoded": 132374,
+          "decoded": 132374,
+          "transfer": 132674
+        }
+      ],
+      "counters": null,
+      "cadCounters": null,
+      "errors": []
+    },
+    {
+      "route": "/explorer?product=locker",
+      "totals": {
+        "encoded": 1459791,
+        "decoded": 2488293,
+        "transfer": 1463991
+      },
+      "resources": [
+        {
+          "name": "/assets/index-C_R5Nz-B.js",
+          "encoded": 111133,
+          "decoded": 355241,
+          "transfer": 111433
+        },
+        {
+          "name": "/assets/index-DTNpdLBD.css",
+          "encoded": 14694,
+          "decoded": 70686,
+          "transfer": 14994
+        },
+        {
+          "name": "/assets/IndustrialExplorer-DxU9FR_9.js",
+          "encoded": 4334,
+          "decoded": 11256,
+          "transfer": 4634
+        },
+        {
+          "name": "/assets/sceneState-Ds4i_Z-Z.js",
+          "encoded": 1522,
+          "decoded": 3453,
+          "transfer": 1822
+        },
+        {
+          "name": "/assets/assets-Chr_gv0w.js",
+          "encoded": 4200,
+          "decoded": 10343,
+          "transfer": 4500
+        },
+        {
+          "name": "/assets/arrow-left-CWeanMCj.js",
+          "encoded": 161,
+          "decoded": 161,
+          "transfer": 461
+        },
+        {
+          "name": "/assets/rotate-ccw-BtvKfhCo.js",
+          "encoded": 196,
+          "decoded": 196,
+          "transfer": 496
+        },
+        {
+          "name": "/assets/IndustrialExplorer-BMeNryk7.css",
+          "encoded": 2211,
+          "decoded": 8702,
+          "transfer": 2511
+        },
+        {
+          "name": "/assets/be-vietnam-pro-vietnamese-400-normal-CRcqvyg1.woff2",
+          "encoded": 11532,
+          "decoded": 11532,
+          "transfer": 11832
+        },
+        {
+          "name": "/assets/be-vietnam-pro-latin-400-normal-PpnXBOrz.woff2",
+          "encoded": 21168,
+          "decoded": 21168,
+          "transfer": 21468
+        },
+        {
+          "name": "/assets/Viewer-muQ4nilK.js",
+          "encoded": 270060,
+          "decoded": 976975,
+          "transfer": 270360
+        },
+        {
+          "name": "/assets/be-vietnam-pro-vietnamese-600-normal-nyU-ZL2p.woff2",
+          "encoded": 12176,
+          "decoded": 12176,
+          "transfer": 12476
+        },
+        {
+          "name": "/assets/be-vietnam-pro-latin-600-normal-BZDkUTrt.woff2",
+          "encoded": 22032,
+          "decoded": 22032,
+          "transfer": 22332
+        },
+        {
+          "name": "/models/locker-r1.glb",
+          "encoded": 984372,
+          "decoded": 984372,
+          "transfer": 984672
+        }
+      ],
+      "counters": {
+        "engine": "three.js r181",
+        "asset": "locker",
+        "calls": "46",
+        "triangles": "26130",
+        "geometries": "59",
+        "textures": "4",
+        "shade": "studio",
+        "explode": "0",
+        "joints": "{}"
+      },
+      "cadCounters": {
+        "engine": "three.js r181",
+        "asset": "locker",
+        "calls": "91",
+        "triangles": "26130",
+        "geometries": "104",
+        "textures": "4",
+        "shade": "cad",
+        "explode": "0",
+        "joints": "{}"
+      },
+      "errors": []
+    },
+    {
+      "route": "/explorer?product=workbench",
+      "totals": {
+        "encoded": 1171171,
+        "decoded": 2199673,
+        "transfer": 1175371
+      },
+      "resources": [
+        {
+          "name": "/assets/index-C_R5Nz-B.js",
+          "encoded": 111133,
+          "decoded": 355241,
+          "transfer": 111433
+        },
+        {
+          "name": "/assets/index-DTNpdLBD.css",
+          "encoded": 14694,
+          "decoded": 70686,
+          "transfer": 14994
+        },
+        {
+          "name": "/assets/IndustrialExplorer-DxU9FR_9.js",
+          "encoded": 4334,
+          "decoded": 11256,
+          "transfer": 4634
+        },
+        {
+          "name": "/assets/assets-Chr_gv0w.js",
+          "encoded": 4200,
+          "decoded": 10343,
+          "transfer": 4500
+        },
+        {
+          "name": "/assets/sceneState-Ds4i_Z-Z.js",
+          "encoded": 1522,
+          "decoded": 3453,
+          "transfer": 1822
+        },
+        {
+          "name": "/assets/arrow-left-CWeanMCj.js",
+          "encoded": 161,
+          "decoded": 161,
+          "transfer": 461
+        },
+        {
+          "name": "/assets/rotate-ccw-BtvKfhCo.js",
+          "encoded": 196,
+          "decoded": 196,
+          "transfer": 496
+        },
+        {
+          "name": "/assets/IndustrialExplorer-BMeNryk7.css",
+          "encoded": 2211,
+          "decoded": 8702,
+          "transfer": 2511
+        },
+        {
+          "name": "/assets/be-vietnam-pro-vietnamese-400-normal-CRcqvyg1.woff2",
+          "encoded": 11532,
+          "decoded": 11532,
+          "transfer": 11832
+        },
+        {
+          "name": "/assets/be-vietnam-pro-latin-400-normal-PpnXBOrz.woff2",
+          "encoded": 21168,
+          "decoded": 21168,
+          "transfer": 21468
+        },
+        {
+          "name": "/assets/Viewer-muQ4nilK.js",
+          "encoded": 270060,
+          "decoded": 976975,
+          "transfer": 270360
+        },
+        {
+          "name": "/assets/be-vietnam-pro-vietnamese-600-normal-nyU-ZL2p.woff2",
+          "encoded": 12176,
+          "decoded": 12176,
+          "transfer": 12476
+        },
+        {
+          "name": "/assets/be-vietnam-pro-latin-600-normal-BZDkUTrt.woff2",
+          "encoded": 22032,
+          "decoded": 22032,
+          "transfer": 22332
+        },
+        {
+          "name": "/models/workbench-r1.glb",
+          "encoded": 695752,
+          "decoded": 695752,
+          "transfer": 696052
+        }
+      ],
+      "counters": {
+        "engine": "three.js r181",
+        "asset": "workbench",
+        "calls": "30",
+        "triangles": "15142",
+        "geometries": "43",
+        "textures": "5",
+        "shade": "studio",
+        "explode": "0",
+        "joints": "{}"
+      },
+      "cadCounters": {
+        "engine": "three.js r181",
+        "asset": "workbench",
+        "calls": "59",
+        "triangles": "15142",
+        "geometries": "72",
+        "textures": "5",
+        "shade": "cad",
+        "explode": "0",
+        "joints": "{}"
+      },
+      "errors": []
+    },
+    {
+      "route": "/explorer?product=fan",
+      "totals": {
+        "encoded": 1124243,
+        "decoded": 2152745,
+        "transfer": 1128443
+      },
+      "resources": [
+        {
+          "name": "/assets/index-C_R5Nz-B.js",
+          "encoded": 111133,
+          "decoded": 355241,
+          "transfer": 111433
+        },
+        {
+          "name": "/assets/index-DTNpdLBD.css",
+          "encoded": 14694,
+          "decoded": 70686,
+          "transfer": 14994
+        },
+        {
+          "name": "/assets/IndustrialExplorer-DxU9FR_9.js",
+          "encoded": 4334,
+          "decoded": 11256,
+          "transfer": 4634
+        },
+        {
+          "name": "/assets/assets-Chr_gv0w.js",
+          "encoded": 4200,
+          "decoded": 10343,
+          "transfer": 4500
+        },
+        {
+          "name": "/assets/sceneState-Ds4i_Z-Z.js",
+          "encoded": 1522,
+          "decoded": 3453,
+          "transfer": 1822
+        },
+        {
+          "name": "/assets/rotate-ccw-BtvKfhCo.js",
+          "encoded": 196,
+          "decoded": 196,
+          "transfer": 496
+        },
+        {
+          "name": "/assets/arrow-left-CWeanMCj.js",
+          "encoded": 161,
+          "decoded": 161,
+          "transfer": 461
+        },
+        {
+          "name": "/assets/IndustrialExplorer-BMeNryk7.css",
+          "encoded": 2211,
+          "decoded": 8702,
+          "transfer": 2511
+        },
+        {
+          "name": "/assets/be-vietnam-pro-vietnamese-400-normal-CRcqvyg1.woff2",
+          "encoded": 11532,
+          "decoded": 11532,
+          "transfer": 11832
+        },
+        {
+          "name": "/assets/be-vietnam-pro-latin-400-normal-PpnXBOrz.woff2",
+          "encoded": 21168,
+          "decoded": 21168,
+          "transfer": 21468
+        },
+        {
+          "name": "/assets/Viewer-muQ4nilK.js",
+          "encoded": 270060,
+          "decoded": 976975,
+          "transfer": 270360
+        },
+        {
+          "name": "/assets/be-vietnam-pro-vietnamese-600-normal-nyU-ZL2p.woff2",
+          "encoded": 12176,
+          "decoded": 12176,
+          "transfer": 12476
+        },
+        {
+          "name": "/assets/be-vietnam-pro-latin-600-normal-BZDkUTrt.woff2",
+          "encoded": 22032,
+          "decoded": 22032,
+          "transfer": 22332
+        },
+        {
+          "name": "/models/fan-edu-v1.glb",
+          "encoded": 648824,
+          "decoded": 648824,
+          "transfer": 649124
+        }
+      ],
+      "counters": {
+        "engine": "three.js r181",
+        "rotorAngle": "0",
+        "asset": "fan",
+        "calls": "115",
+        "triangles": "17894",
+        "geometries": "126",
+        "textures": "4",
+        "shade": "studio",
+        "explode": "0",
+        "joints": "{}"
+      },
+      "cadCounters": {
+        "engine": "three.js r181",
+        "rotorAngle": "0",
+        "asset": "fan",
+        "calls": "229",
+        "triangles": "17894",
+        "geometries": "240",
+        "textures": "4",
+        "shade": "cad",
+        "explode": "0",
+        "joints": "{}"
+      },
+      "errors": []
+    }
+  ],
+  "switches": [
+    {
+      "index": 0,
+      "expectedAsset": "locker",
+      "engine": "three.js r181",
+      "asset": "locker",
+      "calls": "91",
+      "triangles": "26130",
+      "geometries": "104",
+      "textures": "4",
+      "shade": "cad",
+      "explode": "0",
+      "joints": "{}"
+    },
+    {
+      "index": 1,
+      "expectedAsset": "workbench",
+      "engine": "three.js r181",
+      "asset": "workbench",
+      "calls": "59",
+      "triangles": "15142",
+      "geometries": "72",
+      "textures": "4",
+      "shade": "cad",
+      "explode": "0",
+      "joints": "{}"
+    },
+    {
+      "index": 2,
+      "expectedAsset": "locker",
+      "engine": "three.js r181",
+      "asset": "locker",
+      "calls": "91",
+      "triangles": "26130",
+      "geometries": "104",
+      "textures": "4",
+      "shade": "cad",
+      "explode": "0",
+      "joints": "{}"
+    },
+    {
+      "index": 3,
+      "expectedAsset": "workbench",
+      "engine": "three.js r181",
+      "asset": "workbench",
+      "calls": "59",
+      "triangles": "15142",
+      "geometries": "72",
+      "textures": "4",
+      "shade": "cad",
+      "explode": "0",
+      "joints": "{}"
+    },
+    {
+      "index": 4,
+      "expectedAsset": "locker",
+      "engine": "three.js r181",
+      "asset": "locker",
+      "calls": "91",
+      "triangles": "26130",
+      "geometries": "104",
+      "textures": "4",
+      "shade": "cad",
+      "explode": "0",
+      "joints": "{}"
+    },
+    {
+      "index": 5,
+      "expectedAsset": "workbench",
+      "engine": "three.js r181",
+      "asset": "workbench",
+      "calls": "59",
+      "triangles": "15142",
+      "geometries": "72",
+      "textures": "4",
+      "shade": "cad",
+      "explode": "0",
+      "joints": "{}"
+    },
+    {
+      "index": 6,
+      "expectedAsset": "locker",
+      "engine": "three.js r181",
+      "asset": "locker",
+      "calls": "91",
+      "triangles": "26130",
+      "geometries": "104",
+      "textures": "4",
+      "shade": "cad",
+      "explode": "0",
+      "joints": "{}"
+    },
+    {
+      "index": 7,
+      "expectedAsset": "workbench",
+      "engine": "three.js r181",
+      "asset": "workbench",
+      "calls": "59",
+      "triangles": "15142",
+      "geometries": "72",
+      "textures": "4",
+      "shade": "cad",
+      "explode": "0",
+      "joints": "{}"
+    }
+  ]
+}

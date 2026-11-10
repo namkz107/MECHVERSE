@@ -1,6 +1,8 @@
 # Chuẩn nội dung Academy
 
-Áp dụng cho bản học thử cá nhân ngày 09/11/2026. Registry hiện có 12 bài, 48 câu hỏi và 16 bản ghi nguồn. Đây là số liệu cấu trúc đọc từ mã nguồn, không phải số bài được chuyên gia duyệt.
+Áp dụng cho bản học thử cá nhân ngày 09/11/2026. Registry sau lộ trình M01/M02 có 19 bài, 64 câu hỏi và 20 bản ghi nguồn. Đây là số liệu cấu trúc đọc từ mã nguồn, không phải số bài được chuyên gia duyệt. Khung 96 bài trong [coverage](CURRICULUM-COVERAGE.md) được phân trạng thái; chỉ bài có nội dung mới mở được.
+
+Gói nhập môn bổ sung diễn giải/ví dụ/câu hỏi/SVG gốc; NASA/JPL (quy trình thiết kế), Mitutoyo E2026 trang 13-19/13-20 (giới hạn phép đo/kiểm gốc) và OpenStax §9.3 (góc) được đọc ngày 09/11/2026, locator và quyền trong `content/beginner.ts`. Chỉ liên kết và đối chiếu trong phạm vi ghi; không sao chép art, bảng hoặc khóa học. Tên module đầy đủ không đồng nghĩa mọi độ sâu đã viết. Card lấy định nghĩa từ cùng lesson revision; self-rating tách khỏi bài tự chấm và practical unreviewed.
 
 ## Phạm vi và trạng thái
 

@@ -1,0 +1,730 @@
+{
+  "id": "locker",
+  "code": "MV-LK02",
+  "title": "Locker hai ngăn",
+  "category": "Locker",
+  "revision": 1,
+  "sourceKind": "original-design",
+  "url": "/models/locker-r1.glb",
+  "description": "Tấm gấp, bản lề và khoảng trống. Mở từng cánh để đọc kết cấu phía sau.",
+  "dimensions": "Vỏ 500 × 450 × 1 800 mm · giả định",
+  "limitations": [
+    "Thiết kế minh họa của MECHVERSE, chưa chế tạo/duyệt kỹ thuật.",
+    "Cấp vật liệu, dung sai, tải và độ bền liên kết chưa xác minh.",
+    "Explode trình bày các cụm; không phải thứ tự tháo lắp."
+  ],
+  "occurrences": [
+    {
+      "id": "shell",
+      "name": "Vỏ tấm gấp",
+      "english": "shell",
+      "definitionId": "shell",
+      "group": "shell",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "description": "Hai thành, lưng, nóc và đáy có chiều dày 1,5 mm giả định, mép hồi 18 mm. Các tấm liên kết cố định thành vỏ.",
+      "connection": "fixed",
+      "relation": "Thuộc kết cấu cố định trong thiết kế minh họa; không tách thành hướng dẫn tháo.",
+      "color": "#657573"
+    },
+    {
+      "id": "divider",
+      "name": "Vách ngăn cố định",
+      "english": "divider",
+      "definitionId": "divider",
+      "group": "shell",
+      "position": [
+        0,
+        0.91,
+        0
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "description": "Chia hai khoang, mép gấp tựa vào thành. Không chuyển động khi mở cửa.",
+      "connection": "fixed",
+      "relation": "Thuộc kết cấu cố định trong thiết kế minh họa; không tách thành hướng dẫn tháo.",
+      "color": "#657573"
+    },
+    {
+      "id": "shelf",
+      "name": "Khay ngăn trên",
+      "english": "shelf",
+      "definitionId": "shelf",
+      "group": "interior",
+      "position": [
+        0,
+        1.48,
+        0
+      ],
+      "offset": [
+        0,
+        0.12,
+        0.48
+      ],
+      "description": "Khay tấm gấp đặt trên bốn tai đỡ; có thể nhấc ra trong giả thiết của thiết kế.",
+      "connection": "removable",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "shelf-supports",
+      "name": "Tai đỡ khay",
+      "english": "shelf-supports",
+      "definitionId": "shelf-supports",
+      "group": "shell",
+      "position": [
+        0,
+        1.466,
+        0
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "description": "Bốn tai cố định vào vỏ, tạo vùng tựa dưới khay.",
+      "connection": "fixed",
+      "relation": "Thuộc kết cấu cố định trong thiết kế minh họa; không tách thành hướng dẫn tháo.",
+      "color": "#657573"
+    },
+    {
+      "id": "plinth",
+      "name": "Bệ chân",
+      "english": "plinth",
+      "definitionId": "plinth",
+      "group": "shell",
+      "position": [
+        0,
+        0.04,
+        0
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "description": "Bệ cao 80 mm, chân có đệm; không có tải cho phép đã kiểm.",
+      "connection": "fixed",
+      "relation": "Thuộc kết cấu cố định trong thiết kế minh họa; không tách thành hướng dẫn tháo.",
+      "color": "#657573"
+    },
+    {
+      "id": "plinth-cover",
+      "name": "Nắp bệ phía trước",
+      "english": "plinth-cover",
+      "definitionId": "plinth-cover",
+      "group": "interior",
+      "position": [
+        0,
+        0.045,
+        0.226
+      ],
+      "offset": [
+        0,
+        0,
+        0.28
+      ],
+      "description": "Nắp che phía trước bệ, hai vít giữ ở hai đầu.",
+      "connection": "removable",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "upper-door",
+      "name": "Cửa trên",
+      "english": "upper-door",
+      "definitionId": "upper-door",
+      "group": "upper",
+      "position": [
+        -0.231,
+        1.31,
+        0.234
+      ],
+      "offset": [
+        -0.15,
+        0,
+        0.48
+      ],
+      "description": "Tấm cửa có mép hồi, khe thoáng xuyên và lỗ khóa. Bản lề bên trái; mở ra ngoài quanh trục đứng, giới hạn minh họa 105°.",
+      "connection": "hinge",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573",
+      "joint": {
+        "axis": [
+          0,
+          -1,
+          0
+        ],
+        "limits": [
+          0,
+          105
+        ]
+      }
+    },
+    {
+      "id": "upper-handle",
+      "name": "Tay nắm cửa trên",
+      "english": "upper-handle",
+      "definitionId": "upper-handle",
+      "group": "upper",
+      "position": [
+        0.399,
+        0,
+        0.021
+      ],
+      "offset": [
+        0,
+        0,
+        0.06
+      ],
+      "description": "Tay nắm cầu, hai chân bắt vào mặt cửa. Đi cùng cửa khi mở.",
+      "connection": "removable",
+      "parentId": "upper-door",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "upper-lock",
+      "name": "Khóa và cam cửa trên",
+      "english": "upper-lock",
+      "definitionId": "upper-lock",
+      "group": "upper",
+      "position": [
+        0.397,
+        -0.09,
+        0
+      ],
+      "offset": [
+        0,
+        0,
+        0.045
+      ],
+      "description": "Trụ khóa xuyên lỗ cửa; cam minh họa ở tư thế đã nhả để mở cửa. Không mô phỏng thao tác khóa/chìa hoặc cấp bảo mật.",
+      "connection": "removable",
+      "parentId": "upper-door",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "upper-label",
+      "name": "Ô nhãn cửa trên",
+      "english": "upper-label",
+      "definitionId": "upper-label",
+      "group": "upper",
+      "position": [
+        0.229,
+        0.255,
+        0.004
+      ],
+      "offset": [
+        0,
+        0,
+        0.02
+      ],
+      "description": "Khung nhãn nhỏ giữ tấm ghi tên ở phía trên cửa.",
+      "connection": "removable",
+      "parentId": "upper-door",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "upper-hinge-0",
+      "name": "Lá bản lề trên 1",
+      "english": "upper-hinge-0",
+      "definitionId": "upper-hinge",
+      "group": "upper",
+      "position": [
+        -0.231,
+        1.0350000000000001,
+        0.234
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "description": "Lá cố định và hai ống khớp ngoài gắn vào vỏ; tâm ống nằm đúng trục quay cửa.",
+      "connection": "fixed",
+      "relation": "Thuộc kết cấu cố định trong thiết kế minh họa; không tách thành hướng dẫn tháo.",
+      "color": "#657573"
+    },
+    {
+      "id": "upper-moving-hinge-0",
+      "name": "Khớp cửa trên 1",
+      "english": "upper-moving-hinge-0",
+      "definitionId": "upper-moving-hinge",
+      "group": "upper",
+      "position": [
+        0,
+        -0.275,
+        0
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "description": "Ống khớp giữa cùng lá cửa quay quanh chốt đứng, không quay quanh tâm cánh cửa.",
+      "connection": "hinge",
+      "parentId": "upper-door",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "upper-pin-0",
+      "name": "Chốt bản lề trên 1",
+      "english": "upper-pin-0",
+      "definitionId": "upper-pin",
+      "group": "upper",
+      "position": [
+        -0.231,
+        1.0350000000000001,
+        0.234
+      ],
+      "offset": [
+        0,
+        0.09,
+        0
+      ],
+      "description": "Chốt xuyên các ống khớp đồng trục. En explode chỉ minh họa vị trí chốt được rút.",
+      "connection": "removable",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "upper-hinge-1",
+      "name": "Lá bản lề trên 2",
+      "english": "upper-hinge-1",
+      "definitionId": "upper-hinge",
+      "group": "upper",
+      "position": [
+        -0.231,
+        1.585,
+        0.234
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "description": "Lá cố định và hai ống khớp ngoài gắn vào vỏ; tâm ống nằm đúng trục quay cửa.",
+      "connection": "fixed",
+      "relation": "Thuộc kết cấu cố định trong thiết kế minh họa; không tách thành hướng dẫn tháo.",
+      "color": "#657573"
+    },
+    {
+      "id": "upper-moving-hinge-1",
+      "name": "Khớp cửa trên 2",
+      "english": "upper-moving-hinge-1",
+      "definitionId": "upper-moving-hinge",
+      "group": "upper",
+      "position": [
+        0,
+        0.275,
+        0
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "description": "Ống khớp giữa cùng lá cửa quay quanh chốt đứng, không quay quanh tâm cánh cửa.",
+      "connection": "hinge",
+      "parentId": "upper-door",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "upper-pin-1",
+      "name": "Chốt bản lề trên 2",
+      "english": "upper-pin-1",
+      "definitionId": "upper-pin",
+      "group": "upper",
+      "position": [
+        -0.231,
+        1.585,
+        0.234
+      ],
+      "offset": [
+        0,
+        0.09,
+        0
+      ],
+      "description": "Chốt xuyên các ống khớp đồng trục. En explode chỉ minh họa vị trí chốt được rút.",
+      "connection": "removable",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "upper-handle-screw-0",
+      "name": "Vít tay nắm trên 1",
+      "english": "upper-handle-screw-0",
+      "definitionId": "upper-handle-screw",
+      "group": "upper",
+      "position": [
+        0.399,
+        -0.048,
+        -0.004
+      ],
+      "offset": [
+        0,
+        0,
+        -0.035
+      ],
+      "description": "Vít tại chân tay nắm; thân đi qua lỗ cửa, đầu nằm phía trong. Ren nhỏ được lược bỏ.",
+      "connection": "removable",
+      "parentId": "upper-door",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "upper-handle-screw-1",
+      "name": "Vít tay nắm trên 2",
+      "english": "upper-handle-screw-1",
+      "definitionId": "upper-handle-screw",
+      "group": "upper",
+      "position": [
+        0.399,
+        0.048,
+        -0.004
+      ],
+      "offset": [
+        0,
+        0,
+        -0.035
+      ],
+      "description": "Vít tại chân tay nắm; thân đi qua lỗ cửa, đầu nằm phía trong. Ren nhỏ được lược bỏ.",
+      "connection": "removable",
+      "parentId": "upper-door",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "lower-door",
+      "name": "Cửa dưới",
+      "english": "lower-door",
+      "definitionId": "lower-door",
+      "group": "lower",
+      "position": [
+        -0.231,
+        0.495,
+        0.234
+      ],
+      "offset": [
+        0.15,
+        0,
+        0.48
+      ],
+      "description": "Tấm cửa có mép hồi, khe thoáng xuyên và lỗ khóa. Bản lề bên trái; mở ra ngoài quanh trục đứng, giới hạn minh họa 105°.",
+      "connection": "hinge",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573",
+      "joint": {
+        "axis": [
+          0,
+          -1,
+          0
+        ],
+        "limits": [
+          0,
+          105
+        ]
+      }
+    },
+    {
+      "id": "lower-handle",
+      "name": "Tay nắm cửa dưới",
+      "english": "lower-handle",
+      "definitionId": "lower-handle",
+      "group": "lower",
+      "position": [
+        0.399,
+        0,
+        0.021
+      ],
+      "offset": [
+        0,
+        0,
+        0.06
+      ],
+      "description": "Tay nắm cầu, hai chân bắt vào mặt cửa. Đi cùng cửa khi mở.",
+      "connection": "removable",
+      "parentId": "lower-door",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "lower-lock",
+      "name": "Khóa và cam cửa dưới",
+      "english": "lower-lock",
+      "definitionId": "lower-lock",
+      "group": "lower",
+      "position": [
+        0.397,
+        -0.09,
+        0
+      ],
+      "offset": [
+        0,
+        0,
+        0.045
+      ],
+      "description": "Trụ khóa xuyên lỗ cửa; cam minh họa ở tư thế đã nhả để mở cửa. Không mô phỏng thao tác khóa/chìa hoặc cấp bảo mật.",
+      "connection": "removable",
+      "parentId": "lower-door",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "lower-label",
+      "name": "Ô nhãn cửa dưới",
+      "english": "lower-label",
+      "definitionId": "lower-label",
+      "group": "lower",
+      "position": [
+        0.229,
+        0.255,
+        0.004
+      ],
+      "offset": [
+        0,
+        0,
+        0.02
+      ],
+      "description": "Khung nhãn nhỏ giữ tấm ghi tên ở phía trên cửa.",
+      "connection": "removable",
+      "parentId": "lower-door",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "lower-hinge-0",
+      "name": "Lá bản lề dưới 1",
+      "english": "lower-hinge-0",
+      "definitionId": "lower-hinge",
+      "group": "lower",
+      "position": [
+        -0.231,
+        0.21999999999999997,
+        0.234
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "description": "Lá cố định và hai ống khớp ngoài gắn vào vỏ; tâm ống nằm đúng trục quay cửa.",
+      "connection": "fixed",
+      "relation": "Thuộc kết cấu cố định trong thiết kế minh họa; không tách thành hướng dẫn tháo.",
+      "color": "#657573"
+    },
+    {
+      "id": "lower-moving-hinge-0",
+      "name": "Khớp cửa dưới 1",
+      "english": "lower-moving-hinge-0",
+      "definitionId": "lower-moving-hinge",
+      "group": "lower",
+      "position": [
+        0,
+        -0.275,
+        0
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "description": "Ống khớp giữa cùng lá cửa quay quanh chốt đứng, không quay quanh tâm cánh cửa.",
+      "connection": "hinge",
+      "parentId": "lower-door",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "lower-pin-0",
+      "name": "Chốt bản lề dưới 1",
+      "english": "lower-pin-0",
+      "definitionId": "lower-pin",
+      "group": "lower",
+      "position": [
+        -0.231,
+        0.21999999999999997,
+        0.234
+      ],
+      "offset": [
+        0,
+        0.09,
+        0
+      ],
+      "description": "Chốt xuyên các ống khớp đồng trục. En explode chỉ minh họa vị trí chốt được rút.",
+      "connection": "removable",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "lower-hinge-1",
+      "name": "Lá bản lề dưới 2",
+      "english": "lower-hinge-1",
+      "definitionId": "lower-hinge",
+      "group": "lower",
+      "position": [
+        -0.231,
+        0.77,
+        0.234
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "description": "Lá cố định và hai ống khớp ngoài gắn vào vỏ; tâm ống nằm đúng trục quay cửa.",
+      "connection": "fixed",
+      "relation": "Thuộc kết cấu cố định trong thiết kế minh họa; không tách thành hướng dẫn tháo.",
+      "color": "#657573"
+    },
+    {
+      "id": "lower-moving-hinge-1",
+      "name": "Khớp cửa dưới 2",
+      "english": "lower-moving-hinge-1",
+      "definitionId": "lower-moving-hinge",
+      "group": "lower",
+      "position": [
+        0,
+        0.275,
+        0
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "description": "Ống khớp giữa cùng lá cửa quay quanh chốt đứng, không quay quanh tâm cánh cửa.",
+      "connection": "hinge",
+      "parentId": "lower-door",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "lower-pin-1",
+      "name": "Chốt bản lề dưới 2",
+      "english": "lower-pin-1",
+      "definitionId": "lower-pin",
+      "group": "lower",
+      "position": [
+        -0.231,
+        0.77,
+        0.234
+      ],
+      "offset": [
+        0,
+        0.09,
+        0
+      ],
+      "description": "Chốt xuyên các ống khớp đồng trục. En explode chỉ minh họa vị trí chốt được rút.",
+      "connection": "removable",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "lower-handle-screw-0",
+      "name": "Vít tay nắm dưới 1",
+      "english": "lower-handle-screw-0",
+      "definitionId": "lower-handle-screw",
+      "group": "lower",
+      "position": [
+        0.399,
+        -0.048,
+        -0.004
+      ],
+      "offset": [
+        0,
+        0,
+        -0.035
+      ],
+      "description": "Vít tại chân tay nắm; thân đi qua lỗ cửa, đầu nằm phía trong. Ren nhỏ được lược bỏ.",
+      "connection": "removable",
+      "parentId": "lower-door",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "lower-handle-screw-1",
+      "name": "Vít tay nắm dưới 2",
+      "english": "lower-handle-screw-1",
+      "definitionId": "lower-handle-screw",
+      "group": "lower",
+      "position": [
+        0.399,
+        0.048,
+        -0.004
+      ],
+      "offset": [
+        0,
+        0,
+        -0.035
+      ],
+      "description": "Vít tại chân tay nắm; thân đi qua lỗ cửa, đầu nằm phía trong. Ren nhỏ được lược bỏ.",
+      "connection": "removable",
+      "parentId": "lower-door",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    }
+  ],
+  "groups": [
+    {
+      "id": "shell",
+      "name": "Vỏ và kết cấu cố định"
+    },
+    {
+      "id": "upper",
+      "name": "Cửa ngăn trên"
+    },
+    {
+      "id": "lower",
+      "name": "Cửa ngăn dưới"
+    },
+    {
+      "id": "interior",
+      "name": "Khay và nắp tháo được"
+    }
+  ],
+  "camera": {
+    "position": [
+      2,
+      1.65,
+      3.1
+    ],
+    "target": [
+      0,
+      0.9,
+      0
+    ],
+    "distance": 3.8,
+    "fitRadius": 0.98
+  },
+  "floor": 0,
+  "capabilities": {
+    "explode": true,
+    "rotation": false,
+    "joints": true
+  },
+  "coordinateSystem": "metres, Y-up, front +Z",
+  "technicalMaterial": "unspecified",
+  "builder": "scripts/build-industrial.ts",
+  "metrics": {
+    "bytes": 984372,
+    "meshes": 45,
+    "triangles": 26128
+  }
+}

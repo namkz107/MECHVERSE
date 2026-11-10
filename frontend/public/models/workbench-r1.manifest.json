@@ -1,0 +1,400 @@
+{
+  "id": "workbench",
+  "code": "MV-WB01",
+  "title": "Bàn cơ khí",
+  "category": "Workbench",
+  "revision": 1,
+  "sourceKind": "original-design",
+  "url": "/models/workbench-r1.glb",
+  "description": "Đọc đường truyền lực từ mặt bàn qua tai đỡ, khung hàn và bốn chân. So sánh phần cố định với liên kết tháo được.",
+  "dimensions": "1 500 × 700 × 900 mm · danh nghĩa giả định",
+  "limitations": [
+    "Thiết kế minh họa MECHVERSE, chưa chế tạo/duyệt kỹ thuật.",
+    "Không có tải cho phép, cấp vật liệu hoặc chỉ dẫn hàn đã xác minh.",
+    "Khung hàn giữ nguyên; explode không là hướng dẫn tháo từng thanh."
+  ],
+  "occurrences": [
+    {
+      "id": "welded-frame",
+      "name": "Khung ống hàn",
+      "english": "welded-frame",
+      "definitionId": "welded-frame",
+      "group": "frame",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "description": "Bốn chân ống rỗng 40×40 mm, giằng ngang và giằng chéo phía sau. Các thanh nối cố định, không tách rời khi explode.",
+      "connection": "fixed",
+      "relation": "Thuộc kết cấu cố định trong thiết kế minh họa; không tách thành hướng dẫn tháo.",
+      "color": "#657573"
+    },
+    {
+      "id": "top",
+      "name": "Mặt bàn ghép",
+      "english": "top",
+      "definitionId": "top",
+      "group": "surface",
+      "position": [
+        0,
+        0.88,
+        0
+      ],
+      "offset": [
+        0,
+        0.26,
+        0
+      ],
+      "description": "Mặt dày 40 mm giả định, có tám lỗ xuyên và hốc đầu bu lông. Vân gỗ chỉ là diễn họa; chưa quy định cấp gỗ hay tải.",
+      "connection": "removable",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "lower-tray",
+      "name": "Khay dưới",
+      "english": "lower-tray",
+      "definitionId": "lower-tray",
+      "group": "surface",
+      "position": [
+        0,
+        0.252,
+        0
+      ],
+      "offset": [
+        0,
+        0.08,
+        0.42
+      ],
+      "description": "Tấm gấp có thành 30 mm, tựa trên các giằng dưới. Nhấc khỏi khung trong giả thiết của mẫu.",
+      "connection": "removable",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "mount-tabs",
+      "name": "Tai đỡ mặt bàn",
+      "english": "mount-tabs",
+      "definitionId": "mount-tabs",
+      "group": "frame",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "description": "Tám tai có lỗ, hàn vào giằng trên và tựa dưới mặt. Cụm bu lông đi qua lỗ tương ứng.",
+      "connection": "fixed",
+      "relation": "Thuộc kết cấu cố định trong thiết kế minh họa; không tách thành hướng dẫn tháo.",
+      "color": "#657573"
+    },
+    {
+      "id": "top-fastener-0",
+      "name": "Bu lông mặt bàn 1",
+      "english": "top-fastener-0",
+      "definitionId": "top-fastener",
+      "group": "fixings",
+      "position": [
+        -0.56,
+        0.896,
+        -0.2
+      ],
+      "offset": [
+        0,
+        0.42,
+        0
+      ],
+      "description": "Cụm bu lông, vòng đệm và đai ốc minh họa tại tai đỡ. Có hốc đầu trên mặt bàn; ren nhỏ không dựng.",
+      "connection": "removable",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "top-fastener-1",
+      "name": "Bu lông mặt bàn 2",
+      "english": "top-fastener-1",
+      "definitionId": "top-fastener",
+      "group": "fixings",
+      "position": [
+        -0.2,
+        0.896,
+        -0.2
+      ],
+      "offset": [
+        0,
+        0.42,
+        0
+      ],
+      "description": "Cụm bu lông, vòng đệm và đai ốc minh họa tại tai đỡ. Có hốc đầu trên mặt bàn; ren nhỏ không dựng.",
+      "connection": "removable",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "top-fastener-2",
+      "name": "Bu lông mặt bàn 3",
+      "english": "top-fastener-2",
+      "definitionId": "top-fastener",
+      "group": "fixings",
+      "position": [
+        0.2,
+        0.896,
+        -0.2
+      ],
+      "offset": [
+        0,
+        0.42,
+        0
+      ],
+      "description": "Cụm bu lông, vòng đệm và đai ốc minh họa tại tai đỡ. Có hốc đầu trên mặt bàn; ren nhỏ không dựng.",
+      "connection": "removable",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "top-fastener-3",
+      "name": "Bu lông mặt bàn 4",
+      "english": "top-fastener-3",
+      "definitionId": "top-fastener",
+      "group": "fixings",
+      "position": [
+        0.56,
+        0.896,
+        -0.2
+      ],
+      "offset": [
+        0,
+        0.42,
+        0
+      ],
+      "description": "Cụm bu lông, vòng đệm và đai ốc minh họa tại tai đỡ. Có hốc đầu trên mặt bàn; ren nhỏ không dựng.",
+      "connection": "removable",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "top-fastener-4",
+      "name": "Bu lông mặt bàn 5",
+      "english": "top-fastener-4",
+      "definitionId": "top-fastener",
+      "group": "fixings",
+      "position": [
+        -0.56,
+        0.896,
+        0.2
+      ],
+      "offset": [
+        0,
+        0.42,
+        0
+      ],
+      "description": "Cụm bu lông, vòng đệm và đai ốc minh họa tại tai đỡ. Có hốc đầu trên mặt bàn; ren nhỏ không dựng.",
+      "connection": "removable",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "top-fastener-5",
+      "name": "Bu lông mặt bàn 6",
+      "english": "top-fastener-5",
+      "definitionId": "top-fastener",
+      "group": "fixings",
+      "position": [
+        -0.2,
+        0.896,
+        0.2
+      ],
+      "offset": [
+        0,
+        0.42,
+        0
+      ],
+      "description": "Cụm bu lông, vòng đệm và đai ốc minh họa tại tai đỡ. Có hốc đầu trên mặt bàn; ren nhỏ không dựng.",
+      "connection": "removable",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "top-fastener-6",
+      "name": "Bu lông mặt bàn 7",
+      "english": "top-fastener-6",
+      "definitionId": "top-fastener",
+      "group": "fixings",
+      "position": [
+        0.2,
+        0.896,
+        0.2
+      ],
+      "offset": [
+        0,
+        0.42,
+        0
+      ],
+      "description": "Cụm bu lông, vòng đệm và đai ốc minh họa tại tai đỡ. Có hốc đầu trên mặt bàn; ren nhỏ không dựng.",
+      "connection": "removable",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "top-fastener-7",
+      "name": "Bu lông mặt bàn 8",
+      "english": "top-fastener-7",
+      "definitionId": "top-fastener",
+      "group": "fixings",
+      "position": [
+        0.56,
+        0.896,
+        0.2
+      ],
+      "offset": [
+        0,
+        0.42,
+        0
+      ],
+      "description": "Cụm bu lông, vòng đệm và đai ốc minh họa tại tai đỡ. Có hốc đầu trên mặt bàn; ren nhỏ không dựng.",
+      "connection": "removable",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "foot-0",
+      "name": "Chân tăng chỉnh 1",
+      "english": "foot-0",
+      "definitionId": "adjustable-foot",
+      "group": "feet",
+      "position": [
+        -0.66,
+        0,
+        -0.26
+      ],
+      "offset": [
+        0,
+        -0.055,
+        0
+      ],
+      "description": "Đệm tròn, thân vít và đai ốc khóa minh họa. Chưa có bài kiểm tải hoặc phạm vi điều chỉnh nên không có animation điều chỉnh.",
+      "connection": "removable",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "foot-1",
+      "name": "Chân tăng chỉnh 2",
+      "english": "foot-1",
+      "definitionId": "adjustable-foot",
+      "group": "feet",
+      "position": [
+        0.66,
+        0,
+        -0.26
+      ],
+      "offset": [
+        0,
+        -0.055,
+        0
+      ],
+      "description": "Đệm tròn, thân vít và đai ốc khóa minh họa. Chưa có bài kiểm tải hoặc phạm vi điều chỉnh nên không có animation điều chỉnh.",
+      "connection": "removable",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "foot-2",
+      "name": "Chân tăng chỉnh 3",
+      "english": "foot-2",
+      "definitionId": "adjustable-foot",
+      "group": "feet",
+      "position": [
+        -0.66,
+        0,
+        0.26
+      ],
+      "offset": [
+        0,
+        -0.055,
+        0
+      ],
+      "description": "Đệm tròn, thân vít và đai ốc khóa minh họa. Chưa có bài kiểm tải hoặc phạm vi điều chỉnh nên không có animation điều chỉnh.",
+      "connection": "removable",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    },
+    {
+      "id": "foot-3",
+      "name": "Chân tăng chỉnh 4",
+      "english": "foot-3",
+      "definitionId": "adjustable-foot",
+      "group": "feet",
+      "position": [
+        0.66,
+        0,
+        0.26
+      ],
+      "offset": [
+        0,
+        -0.055,
+        0
+      ],
+      "description": "Đệm tròn, thân vít và đai ốc khóa minh họa. Chưa có bài kiểm tải hoặc phạm vi điều chỉnh nên không có animation điều chỉnh.",
+      "connection": "removable",
+      "relation": "Liên kết được minh họa để đọc quan hệ lắp; exploded không phải quy trình tháo đã xác minh.",
+      "color": "#657573"
+    }
+  ],
+  "groups": [
+    {
+      "id": "frame",
+      "name": "Khung hàn và điểm tựa"
+    },
+    {
+      "id": "surface",
+      "name": "Mặt và khay tháo được"
+    },
+    {
+      "id": "fixings",
+      "name": "Liên kết mặt bàn"
+    },
+    {
+      "id": "feet",
+      "name": "Chân và vùng tiếp xúc"
+    }
+  ],
+  "camera": {
+    "position": [
+      2,
+      1.65,
+      2.5
+    ],
+    "target": [
+      0,
+      0.47,
+      0
+    ],
+    "distance": 3.25,
+    "fitRadius": 0.99
+  },
+  "floor": 0,
+  "capabilities": {
+    "explode": true,
+    "rotation": false,
+    "joints": false
+  },
+  "coordinateSystem": "metres, Y-up, front +Z",
+  "technicalMaterial": "unspecified",
+  "builder": "scripts/build-industrial.ts",
+  "metrics": {
+    "bytes": 695752,
+    "meshes": 29,
+    "triangles": 15140
+  }
+}

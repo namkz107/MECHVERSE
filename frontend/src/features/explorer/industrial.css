@@ -1,0 +1,570 @@
+.industrial-workspace {
+  --ink: #243331;
+  --muted: #586660;
+  --line: #d6dbd4;
+  color: var(--ink);
+  background: #f3f3ed;
+  padding: 18px 24px 12px;
+  font-size: 13px;
+}
+.industrial-workspace button,
+.industrial-workspace select {
+  font: inherit;
+}
+.industrial-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+.industrial-heading a {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 12px;
+  text-decoration: none;
+  color: var(--muted);
+  margin-bottom: 7px;
+}
+.industrial-heading h1 {
+  font-size: 27px;
+  letter-spacing: -1px;
+  margin: 0;
+}
+.industrial-heading h1 span {
+  font-size: 11px;
+  letter-spacing: 1px;
+  margin-left: 18px;
+  color: var(--muted);
+  font-weight: 400;
+}
+.product-switch {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  color: var(--muted);
+}
+.product-switch select {
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  background: #fafaf5;
+  border-radius: 3px;
+  color: var(--ink);
+}
+.industrial-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 9px 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+.industrial-bar > div {
+  display: flex;
+  gap: 4px;
+}
+.industrial-workspace button {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  padding: 8px 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 36px;
+  color: var(--ink);
+}
+.industrial-workspace button:hover {
+  background: #e4e8df;
+}
+.industrial-workspace button[aria-pressed="true"] {
+  background: #263d38;
+  color: #fff;
+}
+.industrial-workspace button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.industrial-grid {
+  display: grid;
+  grid-template-columns: 225px minmax(0, 1fr) 255px;
+  min-height: 440px;
+  height: calc(100dvh - 330px);
+  max-height: 1000px;
+  gap: 1px;
+  background: var(--line);
+  margin-top: 12px;
+  border: 1px solid var(--line);
+}
+.industrial-grid.no-left {
+  grid-template-columns: minmax(0, 1fr) 255px;
+}
+.industrial-grid.no-right {
+  grid-template-columns: 225px minmax(0, 1fr);
+}
+.industrial-grid.no-left.no-right {
+  grid-template-columns: minmax(0, 1fr);
+}
+.industrial-tree,
+.industrial-inspector {
+  background: #f6f6f0;
+  min-width: 0;
+  overflow: auto;
+  padding: 15px;
+}
+.industrial-tree {
+  display: flex;
+  flex-direction: column;
+}
+.industrial-panel-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.industrial-panel-title h2 {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0;
+}
+.industrial-panel-title small {
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+}
+.industrial-panel-title button {
+  padding: 4px;
+  min-height: 32px;
+}
+.industrial-tree input {
+  width: 100%;
+  padding: 10px;
+  background: #ebeee6;
+  border: 1px solid var(--line);
+  font: inherit;
+  border-radius: 3px;
+}
+.industrial-tree-scroll {
+  overflow: auto;
+  flex: 1;
+  padding-top: 10px;
+}
+.industrial-tree summary {
+  padding: 12px 0;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.industrial-tree-row {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e4e7df;
+}
+.industrial-tree-row > button:first-child {
+  flex: 1;
+  justify-content: flex-start;
+  text-align: left;
+  font-size: 11px;
+  padding: 8px 3px;
+  gap: 7px;
+}
+.industrial-tree-row > button:last-child {
+  padding: 3px;
+  min-width: 26px;
+}
+.industrial-tree-row svg {
+  flex-shrink: 0;
+}
+.industrial-tree-row.selected {
+  box-shadow: inset 2px 0 #21796d;
+  background: #e2e9df;
+}
+.industrial-panel-foot {
+  padding-top: 14px;
+  font-size: 10px;
+  line-height: 1.8;
+  color: var(--muted);
+  margin: 0;
+}
+.industrial-stage {
+  position: relative;
+  background: #d9ddd7;
+  min-width: 0;
+  overflow: hidden;
+}
+.industrial-canvas {
+  height: 100%;
+  width: 100%;
+  touch-action: none;
+}
+.stage-top,
+.stage-bottom {
+  position: absolute;
+  z-index: 2;
+  left: 18px;
+  right: 18px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  pointer-events: none;
+  font-size: 10px;
+  letter-spacing: 0.6px;
+  color: #3f504a;
+}
+.stage-top {
+  top: 14px;
+}
+.stage-bottom {
+  bottom: 16px;
+  letter-spacing: 0;
+}
+.stage-top button {
+  pointer-events: auto;
+  background: #f3f3ed;
+}
+.industrial-kicker {
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+  display: block;
+  margin: 20px 0 10px;
+}
+.industrial-inspector > h2 {
+  font-size: 23px;
+  line-height: 1.35;
+  letter-spacing: -0.6px;
+  margin-bottom: 14px;
+}
+.industrial-inspector p {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #4a5b52;
+}
+.industrial-inspector dl {
+  display: grid;
+  grid-template-columns: 1fr;
+  font-size: 10px;
+  gap: 4px;
+}
+.industrial-inspector dt {
+  color: var(--muted);
+}
+.industrial-inspector dd {
+  margin: 0 0 9px;
+  overflow-wrap: anywhere;
+}
+.connection-tag {
+  display: inline-block;
+  font-size: 10px;
+  padding: 5px 8px;
+  background: #e1e8de;
+  border: 1px solid #b6c7b9;
+  margin: 0 0 12px;
+}
+.joint-controls {
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+  margin-top: 20px;
+}
+.joint-controls h3 {
+  font-size: 12px;
+}
+.joint-controls label {
+  display: block;
+  font-size: 11px;
+  margin-bottom: 12px;
+}
+.joint-controls output {
+  float: right;
+  font-variant-numeric: tabular-nums;
+}
+.joint-controls input {
+  display: block;
+  width: 100%;
+  accent-color: #287363;
+  min-height: 28px;
+}
+.joint-controls p {
+  font-size: 10px;
+}
+.industrial-provenance {
+  border-top: 1px solid var(--line);
+  padding-top: 15px;
+  margin-top: 20px;
+  font-size: 11px;
+}
+.industrial-provenance summary {
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+.industrial-tools {
+  padding-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+}
+.camera-presets,
+.observation-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+.industrial-tools button {
+  font-size: 11px;
+  border: 1px solid var(--line);
+}
+.assembly-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
+  font-size: 10px;
+  color: var(--muted);
+}
+.assembly-controls label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  font-size: 11px;
+  color: var(--ink);
+}
+.assembly-controls input {
+  width: 140px;
+  accent-color: #287363;
+}
+.assembly-controls output {
+  min-width: 32px;
+}
+.assembly-controls details {
+  margin-left: auto;
+}
+.industrial-grid .collapsed {
+  display: none;
+}
+.industrial-mobile-tabs {
+  display: none;
+}
+.industrial-fallback,
+.industrial-loading {
+  padding: 60px 25px;
+  text-align: center;
+}
+.industrial-fallback svg {
+  max-width: 230px;
+  display: block;
+  margin: auto;
+}
+.industrial-fallback button {
+  background: #f3f3ed;
+}
+.industrial-link {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+  font-size: 12px;
+}
+.scene-callout {
+  background: #263d38;
+  color: white;
+  white-space: nowrap;
+  border: 1px solid #b7c8bb;
+  padding: 8px 13px;
+  font-size: 11px;
+  transform: translate(55%, -80%);
+  display: block;
+}
+.scene-callout i {
+  position: absolute;
+  width: 40px;
+  height: 1px;
+  background: #263d38;
+  left: -35px;
+  bottom: -10px;
+  transform: rotate(-25deg);
+}
+.stage-hint {
+  position: absolute;
+  bottom: 42px;
+  left: 20px;
+  font-size: 11px;
+  background: #f6f6f0;
+  padding: 8px;
+}
+@media (max-width: 1150px) {
+  .industrial-workspace {
+    padding: 16px;
+  }
+  .industrial-grid {
+    grid-template-columns: 185px minmax(0, 1fr) 220px;
+    height: calc(100dvh - 320px);
+    min-height: 400px;
+  }
+  .industrial-grid.no-left {
+    grid-template-columns: minmax(0, 1fr) 220px;
+  }
+  .industrial-grid.no-right {
+    grid-template-columns: 185px minmax(0, 1fr);
+  }
+  .industrial-heading h1 {
+    font-size: 24px;
+  }
+  .industrial-bar > span:last-child {
+    max-width: 205px;
+    text-align: right;
+  }
+  .industrial-tree,
+  .industrial-inspector {
+    padding: 12px;
+  }
+  .stage-bottom > span:last-child {
+    display: none;
+  }
+  .assembly-controls > span {
+    display: none;
+  }
+}
+@media (max-width: 700px) {
+  .industrial-workspace {
+    padding: 12px;
+    font-size: 12px;
+  }
+  .industrial-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .industrial-heading h1 span {
+    display: block;
+    margin: 5px 0 0;
+    font-size: 10px;
+  }
+  .product-switch {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .product-switch select {
+    max-width: 200px;
+  }
+  .industrial-bar {
+    flex-wrap: wrap;
+    font-size: 10px;
+  }
+  .industrial-bar > span:last-child {
+    max-width: none;
+    width: 100%;
+    text-align: left;
+  }
+  .industrial-mobile-tabs {
+    display: flex;
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .industrial-mobile-tabs button {
+    flex: 1;
+    min-height: 42px;
+    border: 1px solid var(--line);
+  }
+  .industrial-mobile-tabs [aria-selected="true"] {
+    background: #263d38;
+    color: white;
+  }
+  .industrial-grid,
+  .industrial-grid.no-left,
+  .industrial-grid.no-right,
+  .industrial-grid.no-left.no-right {
+    display: block;
+    min-height: 440px;
+    height: 58dvh;
+    max-height: 650px;
+    margin-top: 6px;
+  }
+  .industrial-grid > aside,
+  .industrial-grid > section {
+    height: 100%;
+    display: none;
+  }
+  .industrial-grid[data-tab="model"] > .industrial-stage,
+  .industrial-grid[data-tab="parts"] > .industrial-tree,
+  .industrial-grid[data-tab="info"] > .industrial-inspector {
+    display: block;
+  }
+  .industrial-grid[data-tab="parts"] > .industrial-tree {
+    display: flex;
+  }
+  .industrial-panel-title button {
+    display: none;
+  }
+  .industrial-tree-row > button:first-child {
+    font-size: 12px;
+    min-height: 44px;
+  }
+  .industrial-tree-row > button:last-child {
+    min-width: 40px;
+  }
+  .stage-top {
+    left: 12px;
+    right: 12px;
+    font-size: 9px;
+  }
+  .stage-axis {
+    display: none;
+  }
+  .industrial-tools {
+    gap: 10px;
+  }
+  .industrial-tools button {
+    min-height: 42px;
+    font-size: 11px;
+    padding: 7px 9px;
+  }
+  .camera-presets,
+  .observation-tools {
+    gap: 4px;
+  }
+  .assembly-controls {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .assembly-controls label {
+    width: 100%;
+  }
+  .assembly-controls input {
+    flex: 1;
+    min-height: 32px;
+  }
+  .assembly-controls details {
+    margin-left: 0;
+  }
+  .industrial-inspector > h2 {
+    font-size: 25px;
+  }
+  .industrial-inspector p {
+    font-size: 13px;
+  }
+  .industrial-canvas {
+    touch-action: pan-y;
+  }
+  .industrial-canvas canvas {
+    touch-action: none;
+  }
+  .industrial-provenance {
+    padding-bottom: 20px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .industrial-workspace * {
+    scroll-behavior: auto;
+    transition: none !important;
+  }
+}
