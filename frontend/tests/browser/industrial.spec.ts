@@ -230,14 +230,14 @@ test("workbench fixed frame, joint inspection and actual-asset previews", async 
     path: "../docs/qa/industrial/workbench-exploded-1440.png",
   });
 });
-test("fan remains a demo in the shared renderer, with CAD closeup and exploded capture", async ({
+test("fan study keeps its original-design disclosure, with CAD closeup and exploded capture", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/explorer?product=fan");
   await expect(page.getByTestId("model-status")).toHaveText("Mô hình sẵn sàng");
   await expect(
-    page.getByText("Demo giáo dục giản lược", { exact: true }),
+    page.getByText("Thiết kế minh họa MECHVERSE", { exact: true }),
   ).toBeVisible();
   await page.screenshot({ path: "../docs/qa/industrial/fan-studio-1440.png" });
   await page.getByRole("button", { name: "Cánh quạt", exact: true }).click();

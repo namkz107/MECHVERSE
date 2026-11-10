@@ -2,6 +2,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import * as T from "three";
 import { GLTFExporter } from "three/examples/jsm/exporters/GLTFExporter.js";
 import { assets, validateAsset } from "../src/features/explorer/assets";
+import { fanStudyGeometry } from "./fan-study-geometry";
 import { benchGeometry } from "./workbench-geometry";
 import {
   paint,
@@ -170,6 +171,7 @@ for (const asset of assets.filter((a) => a.sourceKind === "original-design")) {
     const g = groups.get(p.id)!;
     (p.parentId ? groups.get(p.parentId)! : scene).add(g);
     if (asset.id === "locker") locker(p.id, g);
+    else if (asset.id === "fan") fanStudyGeometry(p.id, g);
     else benchGeometry(p.id, g);
     mergeOccurrence(g);
   }
@@ -189,7 +191,10 @@ for (const asset of assets.filter((a) => a.sourceKind === "original-design")) {
     JSON.stringify(
       {
         ...asset,
-        coordinateSystem: "metres, Y-up, front +Z",
+        coordinateSystem:
+          asset.id === "fan"
+            ? "illustrative units, Y-up, front +Z"
+            : "metres, Y-up, front +Z",
         technicalMaterial: "unspecified",
         builder: "scripts/build-industrial.ts",
         metrics: { bytes: (glb as ArrayBuffer).byteLength, meshes, triangles },

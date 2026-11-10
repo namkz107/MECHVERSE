@@ -19,7 +19,7 @@ export function StudioEnvironment() {
       room = new RoomEnvironment(),
       env = generator.fromScene(room, 0.04);
     scene.environment = env.texture;
-    scene.environmentIntensity = 0.4;
+    scene.environmentIntensity = 0.85;
     return () => {
       scene.environment = null;
       env.dispose();
@@ -123,9 +123,13 @@ export function Scene({
         original.needsUpdate = true;
       }
       const cad = new T.MeshStandardMaterial({
-        color: "#d7dad6",
-        metalness: 0.05,
-        roughness: 0.8,
+        color: source.name.startsWith("Copper")
+          ? source.color
+          : ["front-guard", "rear-guard"].includes(owner.userData.occurrenceId)
+            ? "#899498"
+            : "#c9cece",
+        metalness: 0.08,
+        roughness: 0.66,
         polygonOffset: true,
         polygonOffsetFactor: 1,
         polygonOffsetUnits: 1,
@@ -135,12 +139,15 @@ export function Scene({
         new T.LineBasicMaterial({
           color: "#43504f",
           transparent: true,
-          opacity: 0.52,
+          opacity: 0.38,
         }),
       );
       edge.raycast = () => {};
       mesh.add(edge);
-      mesh.castShadow = true;
+      // Fine guard wires caused striped self-shadows across the stand.
+      mesh.castShadow = !["front-guard", "rear-guard"].includes(
+        owner.userData.occurrenceId,
+      );
       mesh.receiveShadow = true;
       meshInfo.set(mesh, {
         source,
@@ -177,7 +184,10 @@ export function Scene({
         node.quaternion,
         node.scale,
       );
-      if (asset.capabilities.rotation && ["blade", "shaft"].includes(p.id))
+      if (
+        asset.capabilities.rotation &&
+        ["blade", "shaft", "rotor"].includes(p.id)
+      )
         node.rotation.z = spin.current;
     }
     for (const [mesh, info] of meshInfo) {
@@ -193,7 +203,11 @@ export function Scene({
         state.selected && belongsTo(asset, info.id, state.selected);
       material.emissive.set(selected ? "#1b796e" : "#000000");
       material.emissiveIntensity = selected ? 0.18 : 0;
-      info.edge.visible = state.shade === "cad" || !!selected;
+      // Guard wire silhouettes already read clearly; avoid drawing every tube facet.
+      info.edge.visible =
+        (state.shade === "cad" &&
+          !["front-guard", "rear-guard", "windings"].includes(info.id)) ||
+        !!selected;
       (info.edge.material as T.LineBasicMaterial).color.set(
         selected ? "#17685f" : "#43504f",
       );
@@ -214,7 +228,7 @@ export function Scene({
   ]);
   useEffect(() => {
     spin.current = 0;
-    for (const id of ["blade", "shaft"]) {
+    for (const id of ["blade", "shaft", "rotor"]) {
       const node = roots.get(id);
       if (node) node.rotation.z = 0;
     }
@@ -226,7 +240,7 @@ export function Scene({
   useFrame((_, dt) => {
     if (state.playing && !document.hidden && visible.current) {
       spin.current += Math.min(dt, 0.05) * 2.5;
-      for (const id of ["blade", "shaft"]) {
+      for (const id of ["blade", "shaft", "rotor"]) {
         const node = roots.get(id);
         if (node) node.rotation.z = spin.current;
       }
@@ -295,7 +309,7 @@ export function Scene({
         <planeGeometry args={[200, 200]} />
         <shadowMaterial
           transparent
-          opacity={state.shade === "cad" ? 0.12 : 0.24}
+          opacity={state.shade === "cad" ? 0.06 : 0.14}
         />
       </mesh>
     </>
@@ -345,55 +359,90 @@ function CameraRig({
     state = useStore(explorerStore);
   const goal = useRef<{ position: T.Vector3; target: T.Vector3 } | null>(null);
   useEffect(() => {
-    let target = new T.Vector3(...asset.camera.target),
-      distance =
-        asset.camera.distance * Math.max(1, (size.height / size.width) * 0.8);
-    if (asset.camera.fitRadius && camera instanceof T.PerspectiveCamera) {
-      const vertical = (camera.fov * Math.PI) / 180,
-        horizontal =
-          2 * Math.atan((Math.tan(vertical / 2) * size.width) / size.height);
-      distance = Math.max(
-        asset.camera.distance,
-        (asset.camera.fitRadius /
-          Math.sin(Math.min(vertical, horizontal) / 2)) *
-          1.08,
-      );
-    }
-    let offset = new T.Vector3(...asset.camera.position)
-      .sub(target)
-      .normalize();
-    const view = state.cameraPreset;
-    if (view === "front") offset.set(0, 0.03, 1);
-    if (view === "side") offset.set(1, 0.03, 0);
-    if (view === "top") offset.set(0, 1, 0.001);
-    if (view === "under") offset.set(0.8, -0.65, 1).normalize();
-    if (state.focusVersion > 0 && state.selected) {
-      const node = roots.get(state.selected);
-      if (node) {
-        const bound = new T.Box3().setFromObject(node);
-        if (!bound.isEmpty()) {
-          bound.getCenter(target);
-          distance = Math.max(
-            bound.getSize(new T.Vector3()).length() * 1.8,
-            asset.id === "fan" ? 3 : 0.25,
-          );
-          if (asset.id !== "fan")
-            offset
-              .set(0.3, 0.2, 1)
-              .applyQuaternion(node.getWorldQuaternion(new T.Quaternion()))
-              .normalize();
-          if (asset.id === "workbench")
-            offset.set(0.35, view === "under" ? -0.65 : 1, 0.45).normalize();
+    const frame = requestAnimationFrame(() => {
+      let target = new T.Vector3(...asset.camera.target),
+        distance =
+          asset.camera.distance * Math.max(1, (size.height / size.width) * 0.8);
+      if (asset.camera.fitRadius && camera instanceof T.PerspectiveCamera) {
+        const vertical = (camera.fov * Math.PI) / 180,
+          horizontal =
+            2 * Math.atan((Math.tan(vertical / 2) * size.width) / size.height);
+        distance = Math.max(
+          asset.camera.distance,
+          (asset.camera.fitRadius /
+            Math.sin(Math.min(vertical, horizontal) / 2)) *
+            1.08,
+        );
+      }
+      let offset = new T.Vector3(...asset.camera.position)
+        .sub(target)
+        .normalize();
+      const view = state.cameraPreset;
+      if (view === "front") offset.set(0, 0.03, 1);
+      if (view === "side") offset.set(1, 0.03, 0);
+      if (view === "top") offset.set(0, 1, 0.001);
+      if (view === "under") offset.set(0.8, -0.65, 1).normalize();
+      if (state.focusVersion > 0 && state.selected) {
+        const node = roots.get(state.selected);
+        if (node) {
+          const bound = new T.Box3().setFromObject(node);
+          if (!bound.isEmpty()) {
+            bound.getCenter(target);
+            distance = Math.max(
+              bound.getSize(new T.Vector3()).length() * 1.8,
+              asset.id === "fan" ? 3 : 0.25,
+            );
+            if (asset.id !== "fan")
+              offset
+                .set(0.3, 0.2, 1)
+                .applyQuaternion(node.getWorldQuaternion(new T.Quaternion()))
+                .normalize();
+            if (asset.id === "workbench")
+              offset.set(0.35, view === "under" ? -0.65 : 1, 0.45).normalize();
+          }
+        }
+      } else if (state.explode > 0 && camera instanceof T.PerspectiveCamera) {
+        if (asset.id === "fan" && view === "iso")
+          offset.set(0.28, 0.12, 1).normalize();
+        const bounds = new T.Box3();
+        for (const node of roots.values())
+          bounds.union(new T.Box3().setFromObject(node));
+        if (!bounds.isEmpty()) {
+          bounds.getCenter(target);
+          const vertical = T.MathUtils.degToRad(camera.fov);
+          const horizontal =
+            2 * Math.atan((Math.tan(vertical / 2) * size.width) / size.height);
+          const right = new T.Vector3()
+            .crossVectors(new T.Vector3(0, 1, 0), offset)
+            .normalize();
+          const up = new T.Vector3().crossVectors(offset, right).normalize();
+          let fitted = 0;
+          for (const x of [bounds.min.x, bounds.max.x])
+            for (const y of [bounds.min.y, bounds.max.y])
+              for (const z of [bounds.min.z, bounds.max.z]) {
+                const point = new T.Vector3(x, y, z).sub(target);
+                fitted = Math.max(
+                  fitted,
+                  point.dot(offset) +
+                    Math.max(
+                      Math.abs(point.dot(right)) / Math.tan(horizontal / 2),
+                      Math.abs(point.dot(up)) / Math.tan(vertical / 2),
+                    ),
+                );
+              }
+          distance = fitted * 1.1;
         }
       }
-    } else if (state.explode > 0) distance *= 1.18;
-    goal.current = {
-      position: target.clone().addScaledVector(offset, distance),
-      target,
-    };
-    invalidate();
+      goal.current = {
+        position: target.clone().addScaledVector(offset, distance),
+        target,
+      };
+      invalidate();
+    });
+    return () => cancelAnimationFrame(frame);
   }, [
     asset,
+    state.explode,
     state.cameraVersion,
     state.focusVersion,
     size.width,

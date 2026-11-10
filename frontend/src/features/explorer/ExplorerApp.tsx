@@ -333,7 +333,7 @@ export default function App() {
                           </div>
                         }
                       >
-                        <Viewer reduced={reduced} onReady={onReady} />
+                        <Viewer teaching reduced={reduced} onReady={onReady} />
                       </Suspense>
                       {!ready && (
                         <div className="asset-loading" role="status">

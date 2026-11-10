@@ -1,3 +1,7 @@
+# Latest visual correction — 10/11/2026
+
+See [REALISM-REVIEW.md](REALISM-REVIEW.md) for the new MV-FN02 study fan, shared rendering changes, 40/40 unit tests, browser run/rerun details and actual screenshots. F01 retains the separate EDU asset. Real manufacturer geometry remains unverified. The sections below preserve previous QA snapshots.
+
 # QA — Academy / Explorer sau nâng cấp
 
 ## Industrial Studio / nhiều sản phẩm — 10/11/2026

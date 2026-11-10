@@ -1,0 +1,50 @@
+{
+  "conditions": "Linux, headless Chromium, SwiftShader, no network throttling; emulated mobile viewport is not a physical phone",
+  "checkedAt": "2026-11-10T03:14:29.384Z",
+  "renders": [
+    {
+      "id": "fan",
+      "counters": {
+        "engine": "three.js r181",
+        "rotorAngle": "0",
+        "asset": "fan",
+        "calls": "124",
+        "triangles": "90542",
+        "geometries": "138",
+        "textures": "4",
+        "shade": "cad",
+        "explode": "100",
+        "joints": "{}"
+      }
+    },
+    {
+      "id": "locker",
+      "counters": {
+        "engine": "three.js r181",
+        "asset": "locker",
+        "calls": "91",
+        "triangles": "26130",
+        "geometries": "104",
+        "textures": "4",
+        "shade": "cad",
+        "explode": "65",
+        "joints": "{}"
+      }
+    },
+    {
+      "id": "workbench",
+      "counters": {
+        "engine": "three.js r181",
+        "asset": "workbench",
+        "calls": "59",
+        "triangles": "15142",
+        "geometries": "72",
+        "textures": "5",
+        "shade": "cad",
+        "explode": "65",
+        "joints": "{}"
+      }
+    }
+  ],
+  "errors": []
+}

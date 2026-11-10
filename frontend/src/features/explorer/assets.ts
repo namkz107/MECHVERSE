@@ -1,5 +1,6 @@
 import { parts } from "./fanParts";
 import { workbench } from "./workbench";
+import { fanStudy } from "./fanStudy";
 import type { Asset, Occurrence, Vec3 } from "./assetTypes";
 export const part = (
   id: string,
@@ -175,34 +176,35 @@ for (const [label, y] of [
       ),
     );
 }
+export const legacyFan: Asset = {
+  id: "fan",
+  code: "EDU-FAN-01",
+  title: "Quạt giáo dục",
+  category: "Quạt",
+  revision: 1,
+  sourceKind: "educational-demo",
+  url: "/models/fan-edu-v1.glb",
+  description: "Tám bộ phận để quan sát cấu tạo và chuyển động quay.",
+  dimensions: "Tỷ lệ minh họa · kích thước chưa xác minh",
+  limitations: [
+    "Demo giản lược, không phải sản phẩm hãng.",
+    "Không có nội thất động cơ hoặc thông số chế tạo.",
+  ],
+  occurrences: parts.map((p) => ({
+    ...p,
+    definitionId: p.id,
+    connection: "removable",
+  })),
+  groups: [
+    { id: "head", name: "Cụm đầu quạt" },
+    { id: "support", name: "Giá đỡ" },
+  ],
+  camera: { position: [4.4, 2.2, 7.2], target: [0, 0.25, 0], distance: 8.5 },
+  floor: -1.77,
+  capabilities: { explode: true, rotation: true, joints: false },
+};
 export const assets: Asset[] = [
-  {
-    id: "fan",
-    code: "EDU-FAN-01",
-    title: "Quạt giáo dục",
-    category: "Quạt",
-    revision: 1,
-    sourceKind: "educational-demo",
-    url: "/models/fan-edu-v1.glb",
-    description: "Tám bộ phận để quan sát cấu tạo và chuyển động quay.",
-    dimensions: "Tỷ lệ minh họa · kích thước chưa xác minh",
-    limitations: [
-      "Demo giản lược, không phải sản phẩm hãng.",
-      "Không có nội thất động cơ hoặc thông số chế tạo.",
-    ],
-    occurrences: parts.map((p) => ({
-      ...p,
-      definitionId: p.id,
-      connection: "removable",
-    })),
-    groups: [
-      { id: "head", name: "Cụm đầu quạt" },
-      { id: "support", name: "Giá đỡ" },
-    ],
-    camera: { position: [4.4, 2.2, 7.2], target: [0, 0.25, 0], distance: 8.5 },
-    floor: -1.77,
-    capabilities: { explode: true, rotation: true, joints: false },
-  },
+  fanStudy,
   {
     id: "locker",
     code: "MV-LK02",

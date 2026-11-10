@@ -1,3 +1,7 @@
+# Current product-study update
+
+`MV-FN02/r2` now uses `fan-study-r2.glb` (19 occurrences; illustrative units, not validated metres). F01 uses the independent legacy EDU asset. `yarn asset:industrial` regenerates all study assemblies. [Visual correction and limits](REALISM-REVIEW.md). The baseline tables below describe the previous Industrial snapshot.
+
 # Pipeline 3D hiện tại
 
 ## Industrial multi-asset — 10/11/2026

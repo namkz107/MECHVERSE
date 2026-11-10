@@ -457,7 +457,7 @@ export default function IndustrialExplorer({ assetId }: { assetId: string }) {
           </label>
           <button
             onClick={() => {
-              s.setExplode(s.explode ? 0 : 65);
+              s.setExplode(s.explode ? 0 : asset.id === "fan" ? 100 : 65);
               s.setCamera("iso");
             }}
           >

@@ -1,0 +1,460 @@
+{
+  "id": "fan",
+  "code": "MV-FN02",
+  "title": "Quạt bàn · nghiên cứu cấu tạo",
+  "category": "Quạt",
+  "revision": 2,
+  "sourceKind": "original-design",
+  "url": "/models/fan-study-r2.glb",
+  "description": "19 bộ phận và cụm minh họa: vỏ thông gió, cánh cong, trục, ổ đỡ, stator, rotor và cơ cấu đảo gió. Tách cụm để nhìn cấu tạo phía trong.",
+  "dimensions": "Tỷ lệ minh họa · chưa xác minh kích thước chế tạo",
+  "limitations": [
+    "Thiết kế nghiên cứu do MECHVERSE tự dựng, không phải bản sao sản phẩm hãng hoặc CAD đã duyệt.",
+    "Hình học, cuộn dây và cơ cấu đảo gió thể hiện quan hệ không gian; chưa xác minh thiết kế điện, ăn khớp, dung sai hoặc tải.",
+    "Màu vật liệu chỉ thể hiện ngoại hình. Explode là bố cục quan sát, không phải hướng dẫn sửa chữa.",
+    "F01 tiếp tục dùng asset EDU-FAN-01 và tám ID cũ; tiến độ học không đổi."
+  ],
+  "occurrences": [
+    {
+      "id": "front-guard",
+      "name": "Lồng trước",
+      "english": "Front guard",
+      "group": "head",
+      "description": "Lớp bao phía trước cánh trong mô hình. Các nan cho phép quan sát phần bên trong.",
+      "relation": "Thuộc thiết kế nghiên cứu MV-FN02; cấu tạo và vật liệu chưa được duyệt kỹ thuật.",
+      "position": [
+        0,
+        1.15,
+        0.62
+      ],
+      "offset": [
+        2.2,
+        0.2,
+        -0.42
+      ],
+      "color": "#8a9ca4",
+      "definitionId": "front-guard",
+      "connection": "removable"
+    },
+    {
+      "id": "cap",
+      "name": "Núm giữ cánh",
+      "english": "Blade cap",
+      "group": "head",
+      "description": "Chi tiết minh họa tại tâm cánh, giúp nhận biết vị trí liên kết trong cụm.",
+      "relation": "Thuộc thiết kế nghiên cứu MV-FN02; cấu tạo và vật liệu chưa được duyệt kỹ thuật.",
+      "position": [
+        0,
+        1.15,
+        0.44
+      ],
+      "offset": [
+        0,
+        2.25,
+        0.46
+      ],
+      "color": "#d3ad76",
+      "definitionId": "cap",
+      "connection": "removable"
+    },
+    {
+      "id": "blade",
+      "name": "Cánh quạt",
+      "english": "Fan blade",
+      "group": "head",
+      "description": "Ba cánh có bề mặt cong và thay đổi góc nghiêng theo bán kính; cùng nối vào một bầu cánh. Biên dạng tự dựng, chưa kiểm khí động học.",
+      "relation": "Thuộc thiết kế nghiên cứu MV-FN02; cấu tạo và vật liệu chưa được duyệt kỹ thuật.",
+      "position": [
+        0,
+        1.15,
+        0.23
+      ],
+      "offset": [
+        0,
+        1.75,
+        0.17
+      ],
+      "color": "#328f89",
+      "definitionId": "blade",
+      "connection": "removable"
+    },
+    {
+      "id": "rear-guard",
+      "name": "Lồng sau",
+      "english": "Rear guard",
+      "group": "head",
+      "description": "Lớp bao ở phía sau cánh. Hai nửa lồng giúp nhìn ranh giới ngoài–trong của cụm đầu quạt.",
+      "relation": "Thuộc thiết kế nghiên cứu MV-FN02; cấu tạo và vật liệu chưa được duyệt kỹ thuật.",
+      "position": [
+        0,
+        1.15,
+        -0.14
+      ],
+      "offset": [
+        -2.2,
+        0.2,
+        0.34
+      ],
+      "color": "#8a9ca4",
+      "definitionId": "rear-guard",
+      "connection": "removable"
+    },
+    {
+      "id": "shaft",
+      "name": "Trục minh họa",
+      "english": "Illustrative shaft",
+      "group": "head",
+      "description": "Thanh nằm dọc tâm cánh, minh họa một trục quay. Không thể suy ra kích thước hay lắp ghép thực từ hình này.",
+      "relation": "Thuộc thiết kế nghiên cứu MV-FN02; cấu tạo và vật liệu chưa được duyệt kỹ thuật.",
+      "position": [
+        0,
+        1.15,
+        -0.05
+      ],
+      "offset": [
+        0,
+        0,
+        -0.1
+      ],
+      "color": "#9aaab4",
+      "definitionId": "shaft",
+      "connection": "removable"
+    },
+    {
+      "id": "motor",
+      "name": "Nửa vỏ trước động cơ",
+      "english": "Motor housing",
+      "group": "head",
+      "description": "Nửa vỏ nhựa trước, có khe thông gió xuyên và gờ ghép vỏ. Tách khỏi phần điện cơ để nhìn bên trong.",
+      "relation": "Thuộc thiết kế nghiên cứu MV-FN02; cấu tạo và vật liệu chưa được duyệt kỹ thuật.",
+      "position": [
+        0,
+        1.15,
+        -0.57
+      ],
+      "offset": [
+        -1.05,
+        2.65,
+        0.17
+      ],
+      "color": "#344954",
+      "definitionId": "motor",
+      "connection": "removable"
+    },
+    {
+      "id": "stand",
+      "name": "Trụ đỡ",
+      "english": "Support column",
+      "group": "support",
+      "description": "Trụ, khớp nghiêng và hai má đỡ đầu quạt. Khớp chưa mô phỏng chuyển động.",
+      "relation": "Thuộc thiết kế nghiên cứu MV-FN02; cấu tạo và vật liệu chưa được duyệt kỹ thuật.",
+      "position": [
+        0,
+        -0.55,
+        -0.48
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "color": "#526974",
+      "definitionId": "stand",
+      "connection": "removable"
+    },
+    {
+      "id": "base",
+      "name": "Đế quạt",
+      "english": "Base",
+      "group": "support",
+      "description": "Phần dưới cùng, tạo vùng đặt mô hình trên mặt phẳng.",
+      "relation": "Thuộc thiết kế nghiên cứu MV-FN02; cấu tạo và vật liệu chưa được duyệt kỹ thuật.",
+      "position": [
+        0,
+        -1.65,
+        -0.35
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "color": "#344954",
+      "definitionId": "base",
+      "connection": "removable"
+    },
+    {
+      "id": "rear-cover",
+      "name": "Nửa vỏ sau thông gió",
+      "english": "rear-cover",
+      "definitionId": "rear-cover",
+      "group": "internals",
+      "position": [
+        0,
+        1.15,
+        -0.78
+      ],
+      "offset": [
+        1.05,
+        2.65,
+        0.38
+      ],
+      "description": "Vỏ có các khe thông gió xuyên bề mặt và vành ghép; không dùng vệt màu đen để giả lỗ.",
+      "relation": "Bố trí minh họa do MECHVERSE tự dựng; chưa đối chiếu bản vẽ của một mẫu quạt thương mại. Không dùng để chế tạo hoặc suy ra thứ tự tháo.",
+      "connection": "removable",
+      "color": "#b5b9bc"
+    },
+    {
+      "id": "stator",
+      "name": "Lõi stator minh họa",
+      "english": "stator",
+      "definitionId": "stator",
+      "group": "internals",
+      "position": [
+        0,
+        1.15,
+        -0.55
+      ],
+      "offset": [
+        0,
+        0.65,
+        0.05
+      ],
+      "description": "Lõi dạng vành, các rãnh và đường phân lớp bề mặt; kích thước và số rãnh chỉ là giả thiết hình học.",
+      "relation": "Bố trí minh họa do MECHVERSE tự dựng; chưa đối chiếu bản vẽ của một mẫu quạt thương mại. Không dùng để chế tạo hoặc suy ra thứ tự tháo.",
+      "connection": "removable",
+      "color": "#b5b9bc"
+    },
+    {
+      "id": "windings",
+      "name": "Cụm cuộn dây minh họa",
+      "english": "windings",
+      "definitionId": "windings",
+      "group": "internals",
+      "position": [
+        0,
+        1.15,
+        -0.55
+      ],
+      "offset": [
+        0,
+        0.65,
+        0.55
+      ],
+      "description": "Các vòng dây màu đồng đi qua vùng rãnh và nhô ở hai đầu lõi. Không mô phỏng sơ đồ quấn hoặc đặc tính điện.",
+      "relation": "Bố trí minh họa do MECHVERSE tự dựng; chưa đối chiếu bản vẽ của một mẫu quạt thương mại. Không dùng để chế tạo hoặc suy ra thứ tự tháo.",
+      "connection": "removable",
+      "color": "#b5b9bc"
+    },
+    {
+      "id": "rotor",
+      "name": "Rotor minh họa",
+      "english": "rotor",
+      "definitionId": "rotor",
+      "group": "internals",
+      "position": [
+        0,
+        1.15,
+        -0.55
+      ],
+      "offset": [
+        0,
+        0.05,
+        0.05
+      ],
+      "description": "Khối rotor có rãnh nghiêng, nằm trong lỗ stator và đồng trục với trục minh họa. Không mô phỏng điện từ.",
+      "relation": "Bố trí minh họa do MECHVERSE tự dựng; chưa đối chiếu bản vẽ của một mẫu quạt thương mại. Không dùng để chế tạo hoặc suy ra thứ tự tháo.",
+      "connection": "removable",
+      "color": "#b5b9bc"
+    },
+    {
+      "id": "front-bearing",
+      "name": "Gối đỡ phía trước",
+      "english": "front-bearing",
+      "definitionId": "front-bearing",
+      "group": "internals",
+      "position": [
+        0,
+        1.15,
+        -0.29
+      ],
+      "offset": [
+        -0.8,
+        0.35,
+        0.29
+      ],
+      "description": "Vành đỡ với lỗ trục và ba tai liên kết, kèm vòng đỡ tại tâm; chưa xác định loại ổ hoặc dung sai.",
+      "relation": "Bố trí minh họa do MECHVERSE tự dựng; chưa đối chiếu bản vẽ của một mẫu quạt thương mại. Không dùng để chế tạo hoặc suy ra thứ tự tháo.",
+      "connection": "removable",
+      "color": "#b5b9bc"
+    },
+    {
+      "id": "rear-bearing",
+      "name": "Gối đỡ phía sau",
+      "english": "rear-bearing",
+      "definitionId": "rear-bearing",
+      "group": "internals",
+      "position": [
+        0,
+        1.15,
+        -0.8
+      ],
+      "offset": [
+        0.8,
+        0.35,
+        0.3
+      ],
+      "description": "Vành đỡ phía sau với lỗ trục đồng tâm; hình học chỉ dùng để quan sát quan hệ lắp.",
+      "relation": "Bố trí minh họa do MECHVERSE tự dựng; chưa đối chiếu bản vẽ của một mẫu quạt thương mại. Không dùng để chế tạo hoặc suy ra thứ tự tháo.",
+      "connection": "removable",
+      "color": "#b5b9bc"
+    },
+    {
+      "id": "gear-case",
+      "name": "Vỏ hộp đảo gió minh họa",
+      "english": "gear-case",
+      "definitionId": "gear-case",
+      "group": "internals",
+      "position": [
+        0,
+        0.88,
+        -0.78
+      ],
+      "offset": [
+        0,
+        -0.38,
+        0.08
+      ],
+      "description": "Khay vỏ hộp và các trụ đỡ, để hở phía trên cho quan sát. Chưa có thiết kế truyền động đã kiểm.",
+      "relation": "Bố trí minh họa do MECHVERSE tự dựng; chưa đối chiếu bản vẽ của một mẫu quạt thương mại. Không dùng để chế tạo hoặc suy ra thứ tự tháo.",
+      "connection": "removable",
+      "color": "#b5b9bc"
+    },
+    {
+      "id": "gear-cover",
+      "name": "Nắp hộp đảo gió",
+      "english": "gear-cover",
+      "definitionId": "gear-cover",
+      "group": "internals",
+      "position": [
+        0,
+        0.97,
+        -0.78
+      ],
+      "offset": [
+        0.85,
+        -0.27,
+        0.08
+      ],
+      "description": "Nắp có gờ lắp, lỗ trụ và vít; tách riêng với khay vỏ.",
+      "relation": "Bố trí minh họa do MECHVERSE tự dựng; chưa đối chiếu bản vẽ của một mẫu quạt thương mại. Không dùng để chế tạo hoặc suy ra thứ tự tháo.",
+      "connection": "removable",
+      "color": "#b5b9bc"
+    },
+    {
+      "id": "gear-wheel",
+      "name": "Bánh răng minh họa",
+      "english": "gear-wheel",
+      "definitionId": "gear-wheel",
+      "group": "internals",
+      "position": [
+        0,
+        0.91,
+        -0.83
+      ],
+      "offset": [
+        0,
+        -0.06,
+        0
+      ],
+      "description": "Bánh răng có lỗ tâm và răng hình học đơn giản. Chưa dùng biên dạng thân khai hoặc xác minh ăn khớp; không chạy như mô phỏng cơ cấu.",
+      "relation": "Bố trí minh họa do MECHVERSE tự dựng; chưa đối chiếu bản vẽ của một mẫu quạt thương mại. Không dùng để chế tạo hoặc suy ra thứ tự tháo.",
+      "connection": "removable",
+      "color": "#b5b9bc"
+    },
+    {
+      "id": "motor-fasteners",
+      "name": "Bộ vít liên kết động cơ",
+      "english": "motor-fasteners",
+      "definitionId": "motor-fasteners",
+      "group": "internals",
+      "position": [
+        0,
+        1.15,
+        -0.55
+      ],
+      "offset": [
+        -1.1,
+        1.65,
+        0.05
+      ],
+      "description": "Ba vít xuyên các tai liên kết, có đầu và rãnh vít; ren chi tiết được lược bỏ.",
+      "relation": "Bố trí minh họa do MECHVERSE tự dựng; chưa đối chiếu bản vẽ của một mẫu quạt thương mại. Không dùng để chế tạo hoặc suy ra thứ tự tháo.",
+      "connection": "removable",
+      "color": "#b5b9bc"
+    },
+    {
+      "id": "power-cord",
+      "name": "Dây và phích minh họa",
+      "english": "power-cord",
+      "definitionId": "power-cord",
+      "group": "internals",
+      "position": [
+        0,
+        -1.55,
+        -0.48
+      ],
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "description": "Dây mềm và phích gắn phía sau đế; không đại diện thông số hoặc chuẩn an toàn điện.",
+      "relation": "Bố trí minh họa do MECHVERSE tự dựng; chưa đối chiếu bản vẽ của một mẫu quạt thương mại. Không dùng để chế tạo hoặc suy ra thứ tự tháo.",
+      "connection": "removable",
+      "color": "#b5b9bc"
+    }
+  ],
+  "groups": [
+    {
+      "id": "head",
+      "name": "Cụm đầu quạt"
+    },
+    {
+      "id": "internals",
+      "name": "Bên trong động cơ · minh họa"
+    },
+    {
+      "id": "support",
+      "name": "Giá đỡ và đế"
+    }
+  ],
+  "camera": {
+    "position": [
+      4.1,
+      2.1,
+      7.8
+    ],
+    "target": [
+      0,
+      0.3,
+      -0.1
+    ],
+    "distance": 8.8,
+    "fitRadius": 2.1
+  },
+  "floor": -1.77,
+  "capabilities": {
+    "explode": true,
+    "rotation": true,
+    "joints": false
+  },
+  "coordinateSystem": "illustrative units, Y-up, front +Z",
+  "technicalMaterial": "unspecified",
+  "builder": "scripts/build-industrial.ts",
+  "metrics": {
+    "bytes": 3913356,
+    "meshes": 64,
+    "triangles": 90540
+  }
+}

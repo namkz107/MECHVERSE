@@ -86,7 +86,7 @@ export default function ProductCatalog() {
             <h2>Đọc đồ vật từ bên trong.</h2>
           </div>
           <p>
-            Hai thiết kế minh họa của dự án và một demo giáo dục. Xuất xứ, giả
+            Ba thiết kế nghiên cứu minh họa của dự án. Xuất xứ, giả
             thiết và phần chưa biết được ghi ngay trong từng mẫu.
           </p>
         </div>

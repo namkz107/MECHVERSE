@@ -38,13 +38,13 @@ Phím ↑ dùng khi terminal đang ở dấu nhắc `PS ...>`. Nếu server đan
 
 ## Trạng thái thực tế
 
-- Thư viện `/products` có locker MV-LK02, workbench MV-WB01 và quạt EDU-FAN-01: Studio/CAD, tách cụm, cây bộ phận, focus/isolate và nguồn/giới hạn. Locker mở hai cửa theo trục bản lề; khung hàn bàn giữ nguyên khi tách cụm. Locker/bàn là thiết kế minh họa MECHVERSE, quạt là demo; vỏ tủ/bồn rửa đang khảo sát, chưa có nút mở 3D.
+- Thư viện `/products` có locker MV-LK02, workbench MV-WB01 và quạt nghiên cứu MV-FN02 (19 bộ phận/cụm): Studio/CAD, tách cụm, cây bộ phận, focus/isolate và nguồn/giới hạn. Locker mở hai cửa theo trục bản lề; khung hàn bàn giữ nguyên khi tách cụm. Cả ba là thiết kế minh họa MECHVERSE; F01 tiếp tục dùng demo EDU-FAN-01 riêng; vỏ tủ/bồn rửa đang khảo sát, chưa có nút mở 3D.
 - Trang chủ có đường **Bắt đầu từ số 0** tại `/academy/roadmap`: M01/M02 mỗi module sáu bài có nội dung; toàn registry 19 bài, 64 câu tự kiểm và 20 nguồn. Khung 96 phạm vi core phân biệt bài nhập môn đã viết, bài kế thừa một phần và chưa mở. Nội dung personal-preview, chưa duyệt chuyên môn.
 - Có course/flashcards/quiz dùng chung bài làm; mini lab phù hợp, đường 3D/F01 và quay lại. Lịch thẻ, nháp, phản hồi và bài viết theo rubric lưu trên thiết bị; tự đánh giá thẻ không cấp kỹ năng thực hành/XP.
 - Explorer 3D và F01 được giữ tại `/explorer`; bài làm F01 cũ không bị thay thế. Dashboard mới hiển thị tiến độ Academy trên thiết bị.
 - Backend có `backend/.env`, API health/readiness và ba Mongoose model nền. Cấu hình `MONGODB_URI` trong `.env` rồi khởi động lại backend. Lượt nâng cấp này không đọc secrets hoặc kết nối Atlas thật; xem `/api/ready` để kiểm trạng thái kết nối trong môi trường của bạn.
 - Frontend proxy `/api` sang backend. Tiến độ học vẫn ở trình duyệt; chưa có auth, ghi bài làm vào MongoDB hoặc XP server.
-- Model 3D: `frontend/public/models/fan-edu-v1.glb`, `locker-r1.glb`, `workbench-r1.glb`. Tái tạo hai mẫu mới trong frontend bằng `yarn tsx scripts/build-industrial.ts`; [spec và giới hạn](docs/INDUSTRIAL-ASSEMBLIES.md), [pipeline](docs/3D-PIPELINE.md).
+- Model 3D: `frontend/public/models/fan-study-r2.glb`, `locker-r1.glb`, `workbench-r1.glb`; F01 giữ `fan-edu-v1.glb`. Tái tạo các mẫu nghiên cứu trong frontend bằng `yarn asset:industrial`; [spec và giới hạn](docs/INDUSTRIAL-ASSEMBLIES.md), [pipeline](docs/3D-PIPELINE.md).
 - Model database: `backend/src/models/`. Có schema không có nghĩa database đã có bản ghi.
 - Tài liệu gốc trong `docs/` được giữ nguyên. npm lock cũ được lưu ở `docs/migrations/package-lock.frontend.before-yarn.json`; dependencies hiện tại dùng `yarn.lock` riêng mỗi ứng dụng.
 
